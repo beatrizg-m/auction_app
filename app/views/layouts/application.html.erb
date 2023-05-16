@@ -9,6 +9,14 @@
     <%= stylesheet_link_tag "application" %>
   </head>
 
+  <nav>
+    <%= link_to('Cadastrar-se', new_admin_registration_path)%>
+  </nav>
+
+  <div>
+    <%= flash[:notice] %>
+  </div>
+
   <body>
     <%= yield %>
   </body>
