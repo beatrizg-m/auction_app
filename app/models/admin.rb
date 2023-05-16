@@ -4,11 +4,11 @@ class Admin < ApplicationRecord
 
   def valid_cpf
     unless CPF.valid?(cpf)
-      errors.add(:cpf, 'CPF inválido')
+      errors.add(:cpf, 'já esta em uso')
     end
   end
 
-  validates_uniqueness_of :cpf, message: 'CPF já em uso'
+  validates_uniqueness_of :cpf
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

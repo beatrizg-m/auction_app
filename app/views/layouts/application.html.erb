@@ -10,6 +10,13 @@
   </head>
 
   <nav>
+    <% if admin_signed_in? %>
+      <%= current_admin.email %>
+      <%= button_to 'Sair', destroy_admin_session_path, method: :delete%>
+    <% else %>
+      <%= link_to('Entrar', new_admin_session_path)%>
+    <% end %>
+
     <%= link_to('Cadastrar-se', new_admin_registration_path)%>
   </nav>
 
