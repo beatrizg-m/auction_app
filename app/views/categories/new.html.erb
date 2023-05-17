@@ -1,0 +1,11 @@
+<h1>Cadastre os itens para o leilão</h1>
+
+<%= form_with(model: @category) do |f|%>
+  <%= f.label :name, 'Nome'%>
+  <%= f.text_field :name%>
+
+  <%= f.label :description, 'Descrição'%>
+  <%= f.text_field :description%>
+
+  <%= f.submit 'Criar'%>
+<% end %>

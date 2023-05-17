@@ -1,0 +1,21 @@
+<h1>Itens Cadastrados</h1>
+
+<% @items.each do |i|%>
+  <dl>
+    <dt>Nome: <%=i.name%></dt>
+
+    <dt>Descrição: <%=i.description%></dt>
+
+    <dt>Peso: <%=i.weight%></dt>
+
+    <dt>Largura: <%=i.width%></dt>
+
+    <dt>Altura: <%=i.height%></dt>
+
+    <dt>Profundidade: <%=i.depth%></dt>
+
+    <dt>Categoria: <%=i.category.name%></dt>
+  </dl>
+<% end %>
+
+<%= link_to('Cadastrar Itens', new_item_path)%>

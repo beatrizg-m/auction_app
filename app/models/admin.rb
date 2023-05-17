@@ -8,7 +8,7 @@ class Admin < ApplicationRecord
     end
   end
 
-  validates_uniqueness_of :cpf
+  validates_uniqueness_of :cpf, :message => 'já esta em uso'
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

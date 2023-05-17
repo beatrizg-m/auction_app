@@ -1,0 +1,10 @@
+<h1>Categorias</h1>
+
+<% @categories.each do |c|%>
+  <dl>
+    <dt>Categoria: <%=c.name%></dt>
+    <dd>Descrição: <%=c.description%></dd>
+  </dl>
+<% end %>
+
+<%= link_to('Criar nova categoria', new_category_path)%>
