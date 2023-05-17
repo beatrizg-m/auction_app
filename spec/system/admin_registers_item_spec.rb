@@ -42,6 +42,7 @@ describe 'Usuário cadastra item para leilão' do
     fill_in 'Altura', with: '25'
     fill_in 'Profundidade', with: '20'
     select 'Cozinha', from: 'Categoria'
+    fill_in 'Codigo', with: SecureRandom.alphanumeric(10)
     click_on 'Criar'
 
     expect(page).to have_content 'Item cadastrado com sucesso'

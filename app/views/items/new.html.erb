@@ -8,19 +8,22 @@
   <%= f.text_field :description%>
 
   <%= f.label :weight, 'Peso'%>
-  <%= f.text_field :weight%>
+  <%= f.number_field :weight%>
 
   <%= f.label :width, 'Largura'%>
-  <%= f.text_field :width%>
+  <%= f.number_field :width%>
 
   <%= f.label :height, 'Altura'%>
-  <%= f.text_field :height%>
+  <%= f.number_field :height%>
 
   <%= f.label :depth, 'Profundidade'%>
-  <%= f.text_field :depth%>
+  <%= f.number_field :depth%>
 
   <%= f.label :category_id, 'Categoria'%>
   <%= f.collection_select :category_id, @categories, :id, :name%>
+
+  <%= f.label :code, 'Codigo'%>
+  <%= f.text_field :code%>
 
   <%= f.submit 'Criar'%>
 <% end %>
