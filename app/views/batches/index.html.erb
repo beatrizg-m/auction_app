@@ -4,13 +4,13 @@
     <%= link_to('Criar lote', new_batch_path)%>
   <% end %>
 
-<% @batches.each do |b|%>
-  <% if admin_signed_in? %>
-    <dt>Codigo do lote: <%=b.code%></dt>
+<% if admin_signed_in? %>
+  <% @batches.each do |b|%>
+    <dt>Codigo do lote:<%= link_to(b.code, batch_path(b.id)) %></dt>
     <% b.items.each do |item|%>
-    <ul>
-      <li><%= item.name %></li>
-    </ul>
+      <ul>
+        <li><%= item.name %></li>
+      </ul>
     <% end %>
     <%= link_to('Editar Itens', edit_batch_path(b)) %>
     <% if !b.approved %>
@@ -18,15 +18,41 @@
     <% else %>
       <p>Lote aprovado</p>
     <% end %>
-  <% elsif b.approved %>
-    <p>Codigo do lote: <%=b.code%></p>
-    <% b.items.each do |item|%>
-    <ul>
-      <li><%= item.name %></li>
-    </ul>
-    <% end %>
-
   <% end %>
+<% end %>
+
+<% if !admin_signed_in? %>
+  <div>
+    <h4>Lotes futuros</h4>
+    <% @batches.each do |batch|%>
+      <% if batch.approved && batch.start_date.future? %>
+        <div>
+        <dt>Codigo do lote:<%= link_to(batch.code, batch_path(batch.id)) %></dt>
+        <% batch.items.each do |item|%>
+          <ul>
+            <li><%= item.name %></li>
+          </ul>
+        <% end %>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div>
+    <h4>Lotes em andamento</h4>
+    <% @batches.each do |batch|%>
+      <% if batch.approved && (batch.start_date.past? || batch.start_date.today?) && (batch.final_date.future? || batch.final_date.today?) %>
+        <div>
+        <dt>Codigo do lote:<%= link_to(batch.code, batch_path(batch.id)) %></dt>
+        <% batch.items.each do |item|%>
+          <ul>
+            <li><%= item.name %></li>
+          </ul>
+        <% end %>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
 <% end %>
 
 

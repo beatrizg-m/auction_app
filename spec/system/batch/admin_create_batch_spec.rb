@@ -47,7 +47,7 @@ describe 'Admin create a batch' do
     expect(Batch.last.items.count).to eq 2
   end
 
-  it 'successfully' do
+  it 'With non-standard code' do
     admin = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '85770404027')
     Category.create(name: 'Cozinha', description: 'utensilios de cozinha')
     Item.create!(name: 'Caneca Hello', description: 'Caneca da Hello Kitty branca', weight: 320, width: 13, height: 25, depth: 16, category_id: 1)
@@ -75,6 +75,8 @@ describe 'Admin create a batch' do
     expect(page).to have_content 'Não foi possível cadastrar o lote'
     expect(current_path).to eq batches_path
   end
+
+
 
 
 end

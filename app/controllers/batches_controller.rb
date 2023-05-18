@@ -21,6 +21,10 @@ class BatchesController < ApplicationController
     end
   end
 
+  def show
+    @batch = Batch.find(params[:id])
+  end
+
   def edit
     @batch = Batch.find(params[:id])
     if @batch.approved
@@ -47,8 +51,12 @@ class BatchesController < ApplicationController
     if current_admin.id != @batch.created_by_id
       @batch.approved_by_id = current_admin.id
       @batch.approved = true
-      @batch.save
-
+      begin
+        @batch.save!
+        flash[:notice] = "Lote #{@batch.code} aprovado com sucesso"
+      rescue => exception
+        flash[:notice] = exception
+      end
     else
       flash[:notice] = 'Apenas outro administrador pode aprovar o lote'
     end
