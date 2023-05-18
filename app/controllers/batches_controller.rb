@@ -15,8 +15,8 @@ class BatchesController < ApplicationController
     if @batch.save
       redirect_to batches_path, notice: 'Lote cadastrado esperando por aprovação.'
     else
-      flash[:notice] = 'Não foi possível cadastrar o lote'
       @items = Item.where(:batch_id => nil)
+      flash[:notice] = 'Não foi possível cadastrar o lote'
       render 'new'
     end
   end
@@ -56,6 +56,7 @@ class BatchesController < ApplicationController
   end
 
   private
+
 
   def batch_params
     batch_params = params.require(:batch).permit(:code, :start_date, :final_date, :minimum_value, :minimum_difference, item_ids: [])
