@@ -1,0 +1,33 @@
+<h1>Lotes</h1>
+
+  <% if admin_signed_in? %>
+    <%= link_to('Criar lote', new_batch_path)%>
+  <% end %>
+
+<% @batches.each do |b|%>
+  <% if admin_signed_in? %>
+    <dt>Codigo do lote: <%=b.code%></dt>
+    <% b.items.each do |item|%>
+    <ul>
+      <li><%= item.name %></li>
+    </ul>
+    <% end %>
+    <%= link_to('Editar Itens', edit_batch_path(b)) %>
+    <% if !b.approved %>
+      <%= button_to 'Aprovar', approve_batch_path(b.id), method: :put %>
+    <% else %>
+      <p>Lote aprovado</p>
+    <% end %>
+  <% elsif b.approved %>
+    <p>Codigo do lote: <%=b.code%></p>
+    <% b.items.each do |item|%>
+    <ul>
+      <li><%= item.name %></li>
+    </ul>
+    <% end %>
+
+  <% end %>
+<% end %>
+
+
+

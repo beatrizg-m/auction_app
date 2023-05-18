@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_17_040334) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_18_010051) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -22,6 +22,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_17_040334) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+  end
+
+  create_table "batches", force: :cascade do |t|
+    t.string "code"
+    t.date "start_date"
+    t.date "final_date"
+    t.integer "minimum_value"
+    t.integer "minimum_difference"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "approved_by_id"
+    t.integer "created_by_id"
+    t.boolean "approved", default: false
+    t.index ["approved_by_id"], name: "index_batches_on_approved_by_id"
+    t.index ["created_by_id"], name: "index_batches_on_created_by_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -42,8 +57,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_17_040334) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "code"
+    t.integer "batch_id"
+    t.index ["batch_id"], name: "index_items_on_batch_id"
     t.index ["category_id"], name: "index_items_on_category_id"
   end
 
+  add_foreign_key "batches", "admins", column: "approved_by_id"
+  add_foreign_key "batches", "admins", column: "created_by_id"
   add_foreign_key "items", "categories"
 end

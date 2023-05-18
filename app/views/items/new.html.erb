@@ -1,29 +1,40 @@
 <h1>Cadastre os itens para o leilão</h1>
 
 <%= form_with(model: @item) do |f|%>
-  <%= f.label :name, 'Nome'%>
-  <%= f.text_field :name%>
+  <div>
+    <%= f.label :name, 'Nome'%>
+    <%= f.text_field :name%>
+  </div>
 
-  <%= f.label :description, 'Descrição'%>
-  <%= f.text_field :description%>
+  <div>
+    <%= f.label :description, 'Descrição'%>
+    <%= f.text_field :description%>
+  </div>
 
-  <%= f.label :weight, 'Peso'%>
-  <%= f.number_field :weight%>
+  <div>
+    <%= f.label :weight, 'Peso'%>
+    <%= f.number_field :weight%>
+  </div>
 
-  <%= f.label :width, 'Largura'%>
-  <%= f.number_field :width%>
+  <div>
+    <%= f.label :width, 'Largura'%>
+    <%= f.number_field :width%>
+  </div>
 
-  <%= f.label :height, 'Altura'%>
-  <%= f.number_field :height%>
+  <div>
+    <%= f.label :height, 'Altura'%>
+    <%= f.number_field :height%>
+  </div>
 
-  <%= f.label :depth, 'Profundidade'%>
-  <%= f.number_field :depth%>
+  <div>
+    <%= f.label :depth, 'Profundidade'%>
+    <%= f.number_field :depth%>
+  </div>
 
-  <%= f.label :category_id, 'Categoria'%>
-  <%= f.collection_select :category_id, @categories, :id, :name%>
-
-  <%= f.label :code, 'Codigo'%>
-  <%= f.text_field :code%>
+  <div>
+    <%= f.label :category_id, 'Categoria'%>
+    <%= f.collection_select :category_id, @categories, :id, :name%>
+  </div>
 
   <%= f.submit 'Criar'%>
 <% end %>

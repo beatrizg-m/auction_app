@@ -39,7 +39,7 @@ describe 'Usuário se cadastra' do
     fill_in 'E-mail', with: 'joao@leilao.com.br'
     fill_in 'Senha', with: 'password'
     fill_in 'Confirme sua senha', with: 'password'
-    fill_in 'CPF', with: '11965580432'
+    fill_in 'CPF', with: '85770404027'
     click_on 'Inscrever-se'
 
     expect(page).to have_content 'Não foi possível salvar usuário'
