@@ -1,1 +1,17 @@
 <h1>Detalhes do lote</h1>
+
+<div>
+  <p><strong>Data inicio: </strong><%=@batch.start_date%></p>
+  <p><strong>Data de encerramento: </strong><%=@batch.final_date%></p>
+  <p><strong>Lance mínimo: </strong><%=@batch.minimum_value%></p>
+</div>
+
+<div>
+  <h2>Itens do lote</h2>
+  <% @batch.items.each do |i|%>
+  <p><strong>Nome: </strong><%= i.name %></p>
+  <p><strong>Descrição: </strong><%= i.description %></p>
+  <p><strong>Dimensões do item: </strong><%=i.width%>cm X <%=i.height%>cm X <%=i.depth%>cm</p>
+  <hr>
+  <% end %>
+</div>
