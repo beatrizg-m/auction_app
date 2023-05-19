@@ -18,7 +18,9 @@
       <%= button_to 'Sair', destroy_admin_session_path, method: :delete%> |
     <% else %>
       <%= link_to('Entrar', new_admin_session_path)%> |
-      <%= link_to('Cadastrar-se', new_admin_registration_path)%> |
+      <%= link_to('Cadastrar-se', new_user_registration_path)%> |
+      <%= link_to('Cadastrar Administrador', new_admin_registration_path)%> |
+
     <% end %>
     <%= link_to('Lotes', batches_path)%>
   </nav>
