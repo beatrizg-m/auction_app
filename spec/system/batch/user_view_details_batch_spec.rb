@@ -17,7 +17,6 @@ describe 'user sees details of a batch' do
     expect(page).to have_content 'Dimensões do item: 13cm X 25cm X 16cm'
     expect(page).not_to have_content 'Blusa crooped'
     expect(page).not_to have_content 'Caneca HA'
-
   end
 
 end

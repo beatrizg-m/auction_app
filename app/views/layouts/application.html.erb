@@ -13,11 +13,14 @@
     <% if admin_signed_in? %>
       <%= link_to('Itens', items_path)%> |
       <%= link_to('Categorias', categories_path)%> |
-       |
       <%= current_admin.email %> |
       <%= button_to 'Sair', destroy_admin_session_path, method: :delete%> |
+    <% elsif user_signed_in? %>
+      <%= current_user.email %> |
+      <%= button_to 'Sair', destroy_user_session_path, method: :delete%> |
     <% else %>
-      <%= link_to('Entrar', new_admin_session_path)%> |
+      <%= link_to('Entrar como administrador', new_admin_session_path)%> |
+      <%= link_to('Entrar como usuario', new_user_session_path)%> |
       <%= link_to('Cadastrar-se', new_user_registration_path)%> |
       <%= link_to('Cadastrar Administrador', new_admin_registration_path)%> |
 

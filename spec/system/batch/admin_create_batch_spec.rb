@@ -5,7 +5,7 @@ describe 'Admin create a batch' do
     admin = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '85770404027')
 
     visit root_path
-    click_on 'Entrar'
+    click_on 'Entrar como administrador'
     within('form') do
       fill_in 'E-mail', with: 'maria@leilaodogalpao.com.br'
       fill_in 'Senha', with: 'password'
@@ -26,7 +26,7 @@ describe 'Admin create a batch' do
     c2 = Item.create!(name: 'Caneca HA', description: 'Caneca do homem aranha feita de porcelana pintada', weight: 300, width: 10, height: 20, depth: 16, category_id: 1)
 
     visit root_path
-    click_on 'Entrar'
+    click_on 'Entrar como administrador'
     within('form') do
       fill_in 'E-mail', with: 'maria@leilaodogalpao.com.br'
       fill_in 'Senha', with: 'password'
@@ -55,7 +55,7 @@ describe 'Admin create a batch' do
     c2 = Item.create!(name: 'Caneca HA', description: 'Caneca do homem aranha feita de porcelana pintada', weight: 300, width: 10, height: 20, depth: 16, category_id: 1)
 
     visit root_path
-    click_on 'Entrar'
+    click_on 'Entrar como administrador'
     within('form') do
       fill_in 'E-mail', with: 'maria@leilaodogalpao.com.br'
       fill_in 'Senha', with: 'password'

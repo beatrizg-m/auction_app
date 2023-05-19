@@ -33,7 +33,7 @@
     <h4>O maior lance no momento é de R$<%= @batch.bids.maximum(:value) %></h4>
   <% end %>
   <%= form_with(url: place_a_bid_path) do |form| %>
-    <%= form.label :value %>
+    <%= form.label :value, 'Valor' %>
     <%= form.number_field :value %>
     <%= form.hidden_field :batch_id, value: @batch.id %>
     <%= form.submit 'Enviar lance' %>

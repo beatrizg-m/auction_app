@@ -1,5 +1,7 @@
 class BatchesController < ApplicationController
-  before_action :authenticate_admin!, only:[:new, :create, :edit, :update]
+  before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy, :close, :show_finished_batches]
+  before_action :authenticate_user_or_admin!, only: [:winning_batches]
+
   def index
     @batches = Batch.all
   end
@@ -46,6 +48,28 @@ class BatchesController < ApplicationController
     # redirect_to edit_batch_path
   end
 
+  def destroy
+    @batch = Batch.find(params[:id])
+    @batch.delete
+    redirect_to finished_batches_path, notice: "Lote cancelado com sucesso"
+  end
+
+  def show_finished_batches
+    @batches = Batch.all.filter {|batch| batch.finished? && !batch.winner}
+  end
+
+  def winning_batches
+    @batches = Batch.all.filter {|batch| batch.winner}
+  end
+
+  def close
+    @batch = Batch.find(params[:id])
+    @bid = @batch.bids.find_by(value: @batch.bids.maximum(:value))
+    @batch.winner_id = @bid.user_id
+    @batch.save
+  end
+
+
   def approve
     @batch = Batch.find(params[:id])
     if current_admin.id != @batch.created_by_id
@@ -65,9 +89,14 @@ class BatchesController < ApplicationController
 
   private
 
-
   def batch_params
     batch_params = params.require(:batch).permit(:code, :start_date, :final_date, :minimum_value, :minimum_difference, item_ids: [])
+  end
+
+  def authenticate_user_or_admin!
+    unless current_user || current_admin
+      redirect_to root_path, notice: 'Acesso negado.'
+    end
   end
 
 end

@@ -10,7 +10,7 @@ describe 'admin edits items in a batch' do
     Batch.create!(code: '123asd456', start_date: Date.new(2023, 5, 18), final_date: Date.new(2023, 5, 19), minimum_value: 200, minimum_difference: 50, items: [Item.find(1), Item.find(2)])
 
     visit root_path
-    click_on 'Entrar'
+    click_on 'Entrar como administrador'
     within('form') do
       fill_in 'E-mail', with: 'maria@leilaodogalpao.com.br'
       fill_in 'Senha', with: 'password'

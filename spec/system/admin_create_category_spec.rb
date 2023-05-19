@@ -5,7 +5,7 @@ describe 'Admin cria uma categoria' do
     admin = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '85770404027')
 
     visit root_path
-    click_on 'Entrar'
+    click_on 'Entrar como administrador'
     fill_in 'E-mail', with: 'maria@leilaodogalpao.com.br'
     fill_in 'Senha', with: 'password'
     within('form') do
@@ -28,7 +28,7 @@ describe 'Admin cria uma categoria' do
     admin = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '85770404027')
 
     visit root_path
-    click_on 'Entrar'
+    click_on 'Entrar como administrador'
     fill_in 'E-mail', with: 'maria@leilaodogalpao.com.br'
     fill_in 'Senha', with: 'password'
     within('form') do

@@ -6,7 +6,7 @@ describe 'Admin registers item for auction' do
 
     # login_as(admin)
     visit root_path
-    click_on 'Entrar'
+    click_on 'Entrar como administrador'
     fill_in 'E-mail', with: 'maria@leilaodogalpao.com.br'
     fill_in 'Senha', with: 'password'
     within('form') do
@@ -26,7 +26,7 @@ describe 'Admin registers item for auction' do
     cozinha = Category.create!(name: 'Cozinha', description: 'utensilios de cozinha')
 
     visit root_path
-    click_on 'Entrar'
+    click_on 'Entrar como administrador'
     fill_in 'E-mail', with: 'maria@leilaodogalpao.com.br'
     fill_in 'Senha', with: 'password'
     within('form') do

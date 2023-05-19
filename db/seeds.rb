@@ -8,6 +8,9 @@
 Admin.create(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '79931180005')
 Admin.create(email: 'joao@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '85770404027')
 
+User.create(email: 'roberto@gmail.com', password: '123456', password_confirmation: '123456', cpf: '36328020090')
+User.create(email: 'vanessa@gmail.com', password: '123456', password_confirmation: '123456', cpf: '87777471007')
+
 Category.create!(name: 'Cozinha', description: 'utensilios de cozinha')
 
 Item.create!(name: 'Caneca HA', description: 'Caneca do homem aranha feita de porcelana pintada', weight: 300, width: 10, height: 20, depth: 16, category_id: Category.first.id)
