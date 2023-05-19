@@ -5,11 +5,11 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-Admin.create(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '79931180005')
-Admin.create(email: 'joao@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '85770404027')
+Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '79931180005')
+Admin.create!(email: 'joao@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '85770404027')
 
-User.create(email: 'roberto@gmail.com', password: '123456', password_confirmation: '123456', cpf: '36328020090')
-User.create(email: 'vanessa@gmail.com', password: '123456', password_confirmation: '123456', cpf: '87777471007')
+User.create!(email: 'roberto@gmail.com', password: '123456', password_confirmation: '123456', cpf: '36328020090')
+User.create!(email: 'vanessa@gmail.com', password: '123456', password_confirmation: '123456', cpf: '87777471007')
 
 Category.create!(name: 'Cozinha', description: 'utensilios de cozinha')
 

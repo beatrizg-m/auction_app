@@ -1,0 +1,10 @@
+<% @batches.each do |b|%>
+  <dt>Codigo do lote:<%= link_to(b.code, batch_path(b.id)) %></dt>
+  <% b.items.each do |item|%>
+    <ul>
+      <li><%= item.name %></li>
+    </ul>
+  <% end %>
+
+  <h4>Vencedor: <%= b.winner.email %></h4>
+<% end %>

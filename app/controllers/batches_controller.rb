@@ -55,7 +55,7 @@ class BatchesController < ApplicationController
   end
 
   def show_finished_batches
-    @batches = Batch.all.filter {|batch| batch.finished? && !batch.winner}
+    @batches = Batch.all.filter {|batch| batch.finished? || !batch.winner}
   end
 
   def winning_batches

@@ -2,6 +2,7 @@
 
   <% if admin_signed_in? %>
     <%= link_to('Criar lote', new_batch_path)%>
+    <%= link_to('Lotes vencidos', finished_batches_path)%>
   <% end %>
 
 <% if admin_signed_in? %>

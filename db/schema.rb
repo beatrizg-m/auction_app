@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_18_010051) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_19_020928) do
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -35,8 +35,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_18_010051) do
     t.integer "approved_by_id"
     t.integer "created_by_id"
     t.boolean "approved", default: false
+    t.integer "winner_id"
     t.index ["approved_by_id"], name: "index_batches_on_approved_by_id"
     t.index ["created_by_id"], name: "index_batches_on_created_by_id"
+    t.index ["winner_id"], name: "index_batches_on_winner_id"
+  end
+
+  create_table "bids", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "batch_id", null: false
+    t.integer "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["batch_id"], name: "index_bids_on_batch_id"
+    t.index ["user_id"], name: "index_bids_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -62,7 +74,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_18_010051) do
     t.index ["category_id"], name: "index_items_on_category_id"
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "cpf"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
   add_foreign_key "batches", "admins", column: "approved_by_id"
   add_foreign_key "batches", "admins", column: "created_by_id"
+  add_foreign_key "batches", "users", column: "winner_id"
+  add_foreign_key "bids", "batches"
+  add_foreign_key "bids", "users"
   add_foreign_key "items", "categories"
 end
