@@ -20,7 +20,6 @@ describe 'admin sees expired batches' do
     end
     click_on 'Lotes'
     click_on 'Lotes vencidos'
-    puts page.body
 
     expect(page).to have_button 'Cancelar'
     expect(page).not_to have_button 'Encerrar'
@@ -48,7 +47,7 @@ describe 'admin sees expired batches' do
     click_on 'Lotes vencidos'
 
     expect(page).to have_button 'Encerrar'
-    expect(page).not_to have_button 'Encerrar'
+    expect(page).not_to have_link 'Cancelar'
 
   end
 

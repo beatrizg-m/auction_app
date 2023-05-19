@@ -18,6 +18,8 @@
     <% elsif user_signed_in? %>
       <%= current_user.email %> |
       <%= button_to 'Sair', destroy_user_session_path, method: :delete%> |
+      <%= link_to('Lotes Vencedores', winning_batches_path)%> |
+
     <% else %>
       <%= link_to('Entrar como administrador', new_admin_session_path)%> |
       <%= link_to('Entrar como usuario', new_user_session_path)%> |
