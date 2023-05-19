@@ -4,6 +4,7 @@
   <p><strong>Data inicio: </strong><%=@batch.start_date%></p>
   <p><strong>Data de encerramento: </strong><%=@batch.final_date%></p>
   <p><strong>Lance mínimo: </strong><%=@batch.minimum_value%></p>
+  <p><strong>Diferença mínima: </strong><%=@batch.minimum_difference%></p>
 </div>
 
 <div>
@@ -15,3 +16,26 @@
   <hr>
   <% end %>
 </div>
+
+<% if !@batch.created_by_id.nil? %>
+  <div>
+    <p><strong>Lote criado por:</strong><%= Admin.find(@batch.created_by_id).email%></p>
+    <% if @batch.approved %>
+      <p><strong>Aprovado por:</strong><%= Admin.find(@batch.approved_by_id).email%></p>
+    <% else %>
+      <p><strong>Lote aguardando aprovaçao</p>
+    <% end %>
+  </div>
+<% end %>
+
+<% if @batch.in_progress? && user_signed_in? %>
+  <% if @batch.bids.count > 0 %>
+    <h4>O maior lance no momento é de R$<%= @batch.bids.maximum(:value) %></h4>
+  <% end %>
+  <%= form_with(url: place_a_bid_path) do |form| %>
+    <%= form.label :value %>
+    <%= form.number_field :value %>
+    <%= form.hidden_field :batch_id, value: @batch.id %>
+    <%= form.submit 'Enviar lance' %>
+  <% end %>
+<% end %>

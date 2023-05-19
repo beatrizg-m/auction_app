@@ -19,3 +19,5 @@ describe 'user sees details of a batch' do
     expect(page).not_to have_content 'Caneca HA'
 
   end
+
+end
