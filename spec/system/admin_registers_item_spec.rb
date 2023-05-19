@@ -1,10 +1,9 @@
 require 'rails_helper'
 
-describe 'Usuário cadastra item para leilão' do
-  it 'estando autenticado' do
-    #Arrange
-    admin = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '11965580432')
-    #Act
+describe 'Admin registers item for auction' do
+  it 'being authenticated' do
+    admin = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '85770404027')
+
     # login_as(admin)
     visit root_path
     click_on 'Entrar'
@@ -15,14 +14,14 @@ describe 'Usuário cadastra item para leilão' do
     end
     click_on 'Itens'
     click_on 'Cadastrar Itens'
-    #Assert
+
     expect(current_path).to eq new_item_path
     expect(page).to have_content 'Cadastre os itens para o leilão'
     expect(page).not_to have_content 'Entrar'
   end
 
-  it 'com sucesso' do
-    admin = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '11965580432')
+  it 'successfully' do
+    admin = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '85770404027')
     Category.create!(name: 'Roupas', description: 'variedade de vestimentas')
     cozinha = Category.create!(name: 'Cozinha', description: 'utensilios de cozinha')
 

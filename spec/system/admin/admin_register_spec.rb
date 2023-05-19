@@ -1,29 +1,29 @@
 require "rails_helper"
 
-describe 'Usuário se cadastra' do
-  it 'com sucesso' do
+describe 'Admin register' do
+  it 'successfully' do
     visit root_path
-    click_on 'Cadastrar-se'
+    click_on 'Cadastrar Administrador'
 
     fill_in 'E-mail', with: 'joao@leilaodogalpao.com.br'
     fill_in 'Senha', with: 'password'
     fill_in 'Confirme sua senha', with: 'password'
-    fill_in 'CPF', with: '11965580432'
+    fill_in 'CPF', with: '85770404027'
     click_on 'Inscrever-se'
 
     expect(page).to have_content 'Bem vindo! Você realizou seu registro com sucesso.'
     expect(current_path).to eq root_path
   end
 
-  it 'com cpf já existente' do
-    ad = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '11965580432')
+  it 'with existing CPF' do
+    ad = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '85770404027')
 
     visit root_path
-    click_on 'Cadastrar-se'
+    click_on 'Cadastrar Administrador'
     fill_in 'E-mail', with: 'joao@leilaodogalpao.com.br'
     fill_in 'Senha', with: 'password'
     fill_in 'Confirme sua senha', with: 'password'
-    fill_in 'CPF', with: '11965580432'
+    fill_in 'CPF', with: '85770404027'
     click_on 'Inscrever-se'
 
     expect(page).to have_content 'CPF já esta em uso'
@@ -32,9 +32,9 @@ describe 'Usuário se cadastra' do
     expect(page).not_to have_content 'Bem vindo! Você realizou seu registro com sucesso.'
   end
 
-  it 'e ocorre erro' do
+  it "and can't register" do
     visit root_path
-    click_on 'Cadastrar-se'
+    click_on 'Cadastrar Administrador'
 
     fill_in 'E-mail', with: 'joao@leilao.com.br'
     fill_in 'Senha', with: 'password'
