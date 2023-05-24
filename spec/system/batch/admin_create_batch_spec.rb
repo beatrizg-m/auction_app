@@ -118,10 +118,9 @@ describe 'Admin create a batch' do
     end
     click_on 'Lotes'
     click_on 'Aprovar'
-    click_on 'Editar'
 
-    expect(page).to have_content 'Lote de codigo 005psd456 ja foi aprovado e nao pode ser modificado'
     expect(page).to have_content 'Lote aprovado'
+    expect(page).not_to have_content 'Editar Itens'
     expect(current_path).to eq batches_path
   end
 

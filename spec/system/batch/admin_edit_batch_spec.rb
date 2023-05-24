@@ -67,10 +67,8 @@ describe 'admin edits items in a batch' do
       click_on 'Entrar'
     end
     click_on 'Lotes'
-    click_on 'Editar Itens'
 
-    expect(page).to have_content 'Lote de codigo 123asd456 ja foi aprovado e nao pode ser modificado'
-    expect(page).not_to have_content 'Edite os itens.'
+    expect(page).not_to have_content 'Editar Itens.'
   end
 
 end

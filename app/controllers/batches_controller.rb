@@ -30,7 +30,7 @@ class BatchesController < ApplicationController
   def edit
     @batch = Batch.find(params[:id])
     if @batch.approved
-      redirect_to batches_path, notice: "Lote de codigo #{@batch.code} ja foi aprovado e nao pode ser modificado"
+      redirect_to batches_path
     else
       @items = Item.where(batch_id: [nil, @batch.id])
     end
@@ -39,13 +39,12 @@ class BatchesController < ApplicationController
   def update
     @batch = Batch.find(params[:id])
     if @batch.update(batch_params)
-      # flash[:notice] = 'lote atulizado'
       redirect_to batches_path, notice: 'lote atulizado'
      else
       flash[:notice] = 'nao foi possivel atualizar o lote'
       render 'edit'
     end
-    # redirect_to edit_batch_path
+
   end
 
   def destroy

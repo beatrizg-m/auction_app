@@ -15,8 +15,8 @@
       </ul>
     <% end %>
 
-    <%= link_to('Editar Itens', edit_batch_path(b)) %>
     <% if !b.approved %>
+      <%= link_to('Editar Itens', edit_batch_path(b)) %>
       <%= button_to 'Aprovar', approve_batch_path(b.id), method: :put %>
     <% else %>
       <p>Lote aprovado</p>
