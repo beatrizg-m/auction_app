@@ -124,4 +124,5 @@ describe 'Admin create a batch' do
     expect(page).to have_content 'Lote aprovado'
     expect(current_path).to eq batches_path
   end
+
 end

@@ -1,31 +1,58 @@
 <h1>Detalhes do lote</h1>
 
 <div>
-  <p><strong>Data inicio: </strong><%=@batch.start_date%></p>
-  <p><strong>Data de encerramento: </strong><%=@batch.final_date%></p>
-  <p><strong>Lance mínimo: </strong><%=@batch.minimum_value%></p>
-  <p><strong>Diferença mínima: </strong><%=@batch.minimum_difference%></p>
+  <p><strong><%= Batch.human_attribute_name(:start_date)%>:</strong>
+    <%=@batch.start_date%>
+  </p>
+
+  <p><strong><%= Batch.human_attribute_name(:final_date)%>:</strong>
+    <%=@batch.final_date%>
+  </p>
+
+  <p><strong><%= Batch.human_attribute_name(:minimum_value)%>:</strong>
+    <%=@batch.minimum_value%>
+  </p>
+
+  <p><strong><%= Batch.human_attribute_name(:minimum_difference)%>:</strong>
+    <%=@batch.minimum_difference%>
+  </p>
+
 </div>
 
 <div>
   <h2>Itens do lote</h2>
   <% @batch.items.each do |i|%>
-  <p><strong>Nome: </strong><%= i.name %></p>
-  <p><strong>Descrição: </strong><%= i.description %></p>
-  <p><strong>Dimensões do item: </strong><%=i.width%>cm X <%=i.height%>cm X <%=i.depth%>cm</p>
+  <p><strong><%= Item.human_attribute_name(:name)%></strong>:
+    <%= i.name %>
+  </p>
+
+  <p><strong><%= Item.human_attribute_name(:description)%>:</strong>
+    <%= i.description %>
+  </p>
+
+  <p><strong><%= Item.human_attribute_name(:dimensions)%>:</strong>
+    <%=i.full_dimensions%>
+  </p>
   <hr>
   <% end %>
+
 </div>
 
 <% if !@batch.created_by_id.nil? %>
   <div>
-    <p><strong>Lote criado por:</strong><%= Admin.find(@batch.created_by_id).email%></p>
+    <p><strong><%= Batch.human_attribute_name(:batch_created)%>:</strong>
+      <%= Admin.find(@batch.created_by_id).email%>
+    </p>
+
     <% if @batch.approved %>
-      <p><strong>Aprovado por:</strong><%= Admin.find(@batch.approved_by_id).email%></p>
+      <p><strong><%= Batch.human_attribute_name(:batch_approved)%>
+        :</strong><%= Admin.find(@batch.approved_by_id).email%>
+      </p>
     <% else %>
       <p><strong>Lote aguardando aprovaçao</p>
     <% end %>
   </div>
+
 <% end %>
 
 <% if @batch.in_progress? && user_signed_in? %>

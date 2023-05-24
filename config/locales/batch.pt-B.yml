@@ -1,0 +1,16 @@
+pt-BR:
+  activerecord:
+    models:
+      batch: 'Lote'
+    attributes:
+      batch:
+        code: 'Codigo'
+        start_date: 'Data de início'
+        final_date: 'Data final'
+        minimum_value: 'Valor mínimo do lance'
+        minimum_difference: 'Diferença mínima de lance'
+        items: 'Itens'
+        code_batch: 'Codigo do lote'
+        batch_created: Lote criado por
+        batch_approved: Lote aprovado por
+

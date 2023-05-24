@@ -2,21 +2,37 @@
 
 <% @items.each do |i|%>
   <dl>
-    <dt>Nome: <%=i.name%></dt>
+    <dt><%= Item.human_attribute_name(:name)%>:
+      <%=i.name%>
+    </dt>
 
-    <dt>Descrição: <%=i.description%></dt>
+    <dt><%= Item.human_attribute_name(:description)%>:
+      <%=i.description%>
+    </dt>
 
-    <dt>Peso: <%=i.weight%></dt>
+    <dt><%= Item.human_attribute_name(:weight)%>:
+      <%=i.weight%>
+    </dt>
 
-    <dt>Largura: <%=i.width%></dt>
+    <dt><%= Item.human_attribute_name(:width)%>:
+      <%=i.width%>
+    </dt>
 
-    <dt>Altura: <%=i.height%></dt>
+    <dt><%= Item.human_attribute_name(:height)%>:
+      <%=i.height%>
+    </dt>
 
-    <dt>Profundidade: <%=i.depth%></dt>
+    <dt><%= Item.human_attribute_name(:depth)%>:
+      <%=i.depth%>
+    </dt>
 
-    <dt>Categoria: <%=i.category.name%></dt>
+    <dt><%= Item.human_attribute_name(:category_name)%>:
+      <%=i.category.name%>
+    </dt>
 
-    <dt>Codigo: <%=i.code%></dt>
+    <dt><%= Item.human_attribute_name(:code)%>:
+      <%=i.code%>
+    </dt>
   </dl>
 <% end %>
 

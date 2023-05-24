@@ -1,0 +1,16 @@
+pt-BR:
+  activerecord:
+    models:
+      item: 'Item'
+    attributes:
+      item:
+        code: 'Codigo'
+        name: 'Nome'
+        description: 'Descrição'
+        weight: 'Peso'
+        height: 'Altura'
+        width: 'Largura'
+        depth: 'Profundidade'
+        category_id: 'Categoria'
+        dimensions: 'Dimensões'
+        category_name: 'Categoria'

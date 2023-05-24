@@ -3,9 +3,16 @@ class Item < ApplicationRecord
   belongs_to :batch, optional: true
   before_save :generate_code
   validates :code, uniqueness: true
+
+  def full_dimensions
+    "#{width}cm X #{height}cm X #{depth}cm"
+  end
+
   private
 
   def generate_code
     self.code = SecureRandom.alphanumeric(10)
   end
+
+
 end

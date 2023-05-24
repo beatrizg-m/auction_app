@@ -15,4 +15,6 @@ class Batch < ApplicationRecord
   def finished?
     self.approved && self.final_date.past?
   end
+
+
 end

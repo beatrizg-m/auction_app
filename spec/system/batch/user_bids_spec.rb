@@ -39,7 +39,7 @@ describe 'User tries to bid' do
     click_on 'Lotes'
     click_on '125bsd456'
 
-    expect(page).to have_content 'Data inicio: 2023-05-20'
+    expect(page).to have_content 'Data de início: 2023-05-20'
     expect(page).not_to have_field 'value', type: 'number'
   end
 

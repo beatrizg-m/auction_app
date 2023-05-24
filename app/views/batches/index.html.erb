@@ -1,59 +1,84 @@
 <h1>Lotes</h1>
 
-  <% if admin_signed_in? %>
-    <%= link_to('Criar lote', new_batch_path)%>
-    <%= link_to('Lotes vencidos', finished_batches_path)%>
-  <% end %>
-
 <% if admin_signed_in? %>
+  <%= link_to('Criar lote', new_batch_path)%> |
+  <%= link_to('Lotes vencidos', finished_batches_path)%>
+
   <% @batches.each do |b|%>
-    <dt>Codigo do lote:<%= link_to(b.code, batch_path(b.id)) %></dt>
+    <%= Batch.human_attribute_name(:code_batch)
+      link_to(b.code, batch_path(b.id))
+    %>
+
     <% b.items.each do |item|%>
       <ul>
         <li><%= item.name %></li>
       </ul>
     <% end %>
+
     <%= link_to('Editar Itens', edit_batch_path(b)) %>
     <% if !b.approved %>
       <%= button_to 'Aprovar', approve_batch_path(b.id), method: :put %>
     <% else %>
       <p>Lote aprovado</p>
     <% end %>
+    <hr>
+
   <% end %>
+
 <% end %>
+
+
 
 <% if !admin_signed_in? %>
   <div>
     <h4>Lotes futuros</h4>
+
     <% @batches.each do |batch|%>
       <% if batch.approved && batch.start_date.future? %>
         <div>
-        <dt>Codigo do lote:<%= link_to(batch.code, batch_path(batch.id)) %></dt>
-        <% batch.items.each do |item|%>
-          <ul>
-            <li><%= item.name %></li>
-          </ul>
-        <% end %>
-      </div>
+          <%= Batch.human_attribute_name(:code_batch)
+            link_to(batch.code, batch_path(batch.id))
+          %>
+
+          <% batch.items.each do |item|%>
+            <ul>
+              <li><%= item.name %></li>
+            </ul>
+          <% end %>
+        </div>
+
       <% end %>
+      <hr>
+
     <% end %>
+
   </div>
 
   <div>
     <h4>Lotes em andamento</h4>
+
     <% @batches.each do |batch|%>
       <% if batch.approved && (batch.start_date.past? || batch.start_date.today?) && (batch.final_date.future? || batch.final_date.today?) %>
         <div>
-        <dt>Codigo do lote:<%= link_to(batch.code, batch_path(batch.id)) %></dt>
-        <% batch.items.each do |item|%>
-          <ul>
-            <li><%= item.name %></li>
-          </ul>
-        <% end %>
-      </div>
+
+          <%= Batch.human_attribute_name(:code_batch)
+            link_to(batch.code, batch_path(batch.id))
+          %>
+
+          <% batch.items.each do |item|%>
+            <ul>
+              <li><%= item.name %></li>
+            </ul>
+          <% end %>
+        </div>
+
       <% end %>
+
     <% end %>
+    <hr>
+
   </div>
+
 <% end %>
 
 

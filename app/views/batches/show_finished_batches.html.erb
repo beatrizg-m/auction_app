@@ -1,13 +1,18 @@
 <% @batches.each do |b|%>
-  <dt>Codigo do lote:<%= link_to(b.code, batch_path(b.id)) %></dt>
+  <%= Batch.human_attribute_name(:code_batch)
+      link_to(b.code, batch_path(b))
+  %>
+
   <% b.items.each do |item|%>
     <ul>
       <li><%= item.name %></li>
     </ul>
   <% end %>
+
   <% if b.bids.count > 0 %>
     <%= button_to 'Encerrar', close_batch_path(b), method: :put %>
   <% else %>
     <%= button_to 'Cancelar', batch_path(b), method: :delete %>
   <% end %>
+
 <% end %>

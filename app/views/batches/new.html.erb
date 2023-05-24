@@ -3,32 +3,32 @@
 <%= form_with(model: @batch) do |f|%>
 
   <div>
-    <%= f.label :code, 'Codigo'%>
+    <%= f.label :code%>
     <%= f.text_field :code%>
   </div>
 
   <div>
-    <%= f.label :start_date, 'Data de início'%>
+    <%= f.label :start_date%>
     <%= f.date_field :start_date%>
   </div>
 
   <div>
-    <%= f.label :final_date, 'Data final'%>
+    <%= f.label :final_date%>
     <%= f.date_field :final_date %>
   </div>
 
   <div>
-    <%= f.label :minimum_value, 'Valor mínimo do lance'%>
+    <%= f.label :minimum_value %>
     <%= f.number_field :minimum_value%>
   </div>
 
   <div>
-    <%= f.label :minimum_difference, 'Diferença mínima de lance'%>
+    <%= f.label :minimum_difference %>
     <%= f.number_field :minimum_difference%>
   </div>
 
   <div>
-    <%= f.label :items, 'Itens'%>
+    <%= f.label :items %>
     <% @items.each do |item| %>
       <div>
         <%= check_box_tag "batch[item_ids][]", item.id %>
