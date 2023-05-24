@@ -4,6 +4,7 @@ pt-BR:
       user: 'Usuário'
     attributes:
       user:
+        email: 'Email'
         password: 'Senha'
         cpf: 'CPF'
         password_confirmation: 'Confirme sua senha'

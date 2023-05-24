@@ -6,3 +6,4 @@ pt-BR:
       admin:
         cpf: 'CPF'
         password_confirmation: Confirme sua senha
+        email: 'Email'

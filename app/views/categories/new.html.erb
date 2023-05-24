@@ -1,10 +1,10 @@
-<h1>Cadastre os itens para o leilão</h1>
+<h1>Cadastre uma nova categoria </h1>
 
 <%= form_with(model: @category) do |f|%>
-  <%= f.label :name, 'Nome'%>
+  <%= f.label :name %>
   <%= f.text_field :name%>
 
-  <%= f.label :description, 'Descrição'%>
+  <%= f.label :description %>
   <%= f.text_field :description%>
 
   <%= f.submit 'Criar'%>
