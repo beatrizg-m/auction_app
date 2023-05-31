@@ -24,6 +24,7 @@ describe 'Admin registers item for auction' do
     admin = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '85770404027')
     Category.create!(name: 'Roupas', description: 'variedade de vestimentas')
     cozinha = Category.create!(name: 'Cozinha', description: 'utensilios de cozinha')
+    allow(SecureRandom).to receive(:alphanumeric).and_return('ABCDE12345')
 
     visit root_path
     click_on 'Entrar como administrador'
@@ -44,6 +45,7 @@ describe 'Admin registers item for auction' do
     click_on 'Criar'
 
     expect(page).to have_content 'Item cadastrado com sucesso'
+    expect(page).to have_content 'Codigo: ABCDE12345'
     expect(page).to have_content 'Nome: Caneca'
     expect(page).to have_content 'Descrição: Caneca feita de porcelana'
     expect(page).to have_content 'Peso: 10'

@@ -13,10 +13,10 @@
     <% if admin_signed_in? %>
       <%= link_to('Itens', items_path)%> |
       <%= link_to('Categorias', categories_path)%> |
-      <%= current_admin.email %> |
+      <%= current_admin.full_description %> |
       <%= button_to 'Sair', destroy_admin_session_path, method: :delete%> |
     <% elsif user_signed_in? %>
-      <%= current_user.email %> |
+      <%= current_user.full_description %> |
       <%= button_to 'Sair', destroy_user_session_path, method: :delete%> |
       <%= link_to('Lotes Vencedores', winning_batches_path)%> |
 

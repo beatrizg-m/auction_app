@@ -21,6 +21,6 @@ Item.create!(name: 'Caneca HP4', description: 'Caneca do harry potter 4', weight
 Item.create!(name: 'Caneca HP5', description: 'Caneca do harry potter 5', weight: 300, width: 10, height: 20, depth: 16, category_id: Category.first.id)
 
 Batch.create!(code: '123asd456', start_date: Date.new(2023, 5, 18), final_date: Date.new(2023, 5, 21), minimum_value: 200, minimum_difference: 50, items: [], approved: true, created_by_id: Admin.first.id, approved_by_id: Admin.last.id)
-Batch.create!(code: '125bsd456', start_date: Date.new(2023, 5, 25), final_date: Date.new(2023, 5, 30), minimum_value: 200, minimum_difference: 50, items: [Item.first], approved: true, created_by_id: Admin.last.id, approved_by_id: Admin.first.id)
-Batch.create!(code: '005psd456', start_date: Date.new(2023, 5, 10), final_date: Date.new(2023, 5, 15), minimum_value: 200, minimum_difference: 50, items: [Item.last], approved: true, created_by_id: Admin.last.id, approved_by_id: Admin.first.id)
+Batch.create!(code: '125bsd456', start_date: Date.new(2023, 5, 25), final_date: 1.day.from_now, minimum_value: 200, minimum_difference: 50, items: [Item.first], approved: true, created_by_id: Admin.last.id, approved_by_id: Admin.first.id)
+Batch.create!(code: '005psd456', start_date: Date.new(2023, 5, 10), final_date: Date.today, minimum_value: 200, minimum_difference: 50, items: [Item.last], approved: true, created_by_id: Admin.last.id, approved_by_id: Admin.first.id)
 Bid.create(value: 300, batch_id: Batch.last.id, user_id: User.last.id)

@@ -8,8 +8,8 @@ describe 'User tries to bid' do
     Category.create!(name: 'Cozinha', description: 'utensilios de cozinha')
     Item.create!(name: 'Caneca HA', description: 'Caneca do homem aranha feita de porcelana pintada', weight: 300, width: 10, height: 20, depth: 16, category_id: Category.first.id)
     Item.create!(name: 'Caneca HP', description: 'Caneca do harry potter', weight: 300, width: 10, height: 20, depth: 16, category_id: Category.first.id)
-    Batch.create!(code: '125bsd456', start_date: Date.new(2023, 5, 17), final_date: Date.new(2023, 5, 30), minimum_value: 200, minimum_difference: 50, items: [Item.first], approved: true, created_by_id: Admin.last.id, approved_by_id: Admin.first.id)
-    Batch.create!(code: '123asd456', start_date: Date.new(2023, 5, 18), final_date: Date.new(2023, 5, 21), minimum_value: 200, minimum_difference: 50, items: [], approved: true, created_by_id: Admin.first.id, approved_by_id: Admin.last.id)
+    Batch.create!(code: '125bsd456', start_date: Date.new(2023, 5, 17), final_date: 1.day.from_now, minimum_value: 200, minimum_difference: 50, items: [Item.first], approved: true, created_by_id: Admin.last.id, approved_by_id: Admin.first.id)
+    Batch.create!(code: '123asd456', start_date: Date.new(2023, 5, 18), final_date: 1.day.from_now, minimum_value: 200, minimum_difference: 50, items: [], approved: true, created_by_id: Admin.first.id, approved_by_id: Admin.last.id)
 
     visit root_path
     click_on 'Entrar como usuario'
@@ -32,7 +32,7 @@ describe 'User tries to bid' do
     Category.create!(name: 'Cozinha', description: 'utensilios de cozinha')
     Item.create!(name: 'Caneca HA', description: 'Caneca do homem aranha feita de porcelana pintada', weight: 300, width: 10, height: 20, depth: 16, category_id: Category.first.id)
     Item.create!(name: 'Caneca HP', description: 'Caneca do harry potter', weight: 300, width: 10, height: 20, depth: 16, category_id: Category.first.id)
-    Batch.create!(code: '125bsd456', start_date: Date.new(2023, 5, 20), final_date: Date.new(2023, 5, 30), minimum_value: 200, minimum_difference: 50, items: [Item.first], approved: true, created_by_id: Admin.last.id, approved_by_id: Admin.first.id)
+    Batch.create!(code: '125bsd456', start_date: Date.new(2023, 5, 20), final_date: 1.day.from_now, minimum_value: 200, minimum_difference: 50, items: [Item.first], approved: true, created_by_id: Admin.last.id, approved_by_id: Admin.first.id)
     Batch.create!(code: '123asd456', start_date: Date.new(2023, 5, 18), final_date: Date.new(2023, 5, 21), minimum_value: 200, minimum_difference: 50, items: [], approved: true, created_by_id: Admin.first.id, approved_by_id: Admin.last.id)
 
     visit root_path
@@ -50,7 +50,7 @@ describe 'User tries to bid' do
     Category.create!(name: 'Cozinha', description: 'utensilios de cozinha')
     Item.create!(name: 'Caneca HA', description: 'Caneca do homem aranha feita de porcelana pintada', weight: 300, width: 10, height: 20, depth: 16, category_id: Category.first.id)
     Item.create!(name: 'Caneca HP', description: 'Caneca do harry potter', weight: 300, width: 10, height: 20, depth: 16, category_id: Category.first.id)
-    Batch.create!(code: '125bsd456', start_date: Date.new(2023, 5, 17), final_date: Date.new(2023, 5, 30), minimum_value: 200, minimum_difference: 50, items: [Item.first], approved: true, created_by_id: Admin.last.id, approved_by_id: Admin.first.id)
+    Batch.create!(code: '125bsd456', start_date: Date.new(2023, 5, 17), final_date: 1.day.from_now, minimum_value: 200, minimum_difference: 50, items: [Item.first], approved: true, created_by_id: Admin.last.id, approved_by_id: Admin.first.id)
     Batch.create!(code: '123asd456', start_date: Date.new(2023, 5, 18), final_date: Date.new(2023, 5, 21), minimum_value: 200, minimum_difference: 50, items: [], approved: true, created_by_id: Admin.first.id, approved_by_id: Admin.last.id)
 
     visit root_path

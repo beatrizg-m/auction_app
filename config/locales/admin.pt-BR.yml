@@ -4,6 +4,7 @@ pt-BR:
       admin: 'Administrador'
     attributes:
       admin:
+        name: 'Nome'
         cpf: 'CPF'
         password_confirmation: Confirme sua senha
         email: 'Email'

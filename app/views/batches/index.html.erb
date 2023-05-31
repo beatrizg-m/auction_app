@@ -1,9 +1,9 @@
-<h1>Lotes</h1>
-
+<h1><%= Batch.model_name.human %></h1>
 <% if admin_signed_in? %>
   <%= link_to('Criar lote', new_batch_path)%> |
   <%= link_to('Lotes vencidos', finished_batches_path)%>
-
+  <br/>
+  <hr>
   <% @batches.each do |b|%>
     <%= Batch.human_attribute_name(:code_batch)
       link_to(b.code, batch_path(b.id))
