@@ -4,13 +4,9 @@ describe 'Admin cria uma categoria' do
   it 'com sucesso' do
     admin = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '85770404027')
 
+    login_as(admin)
     visit root_path
-    click_on 'Entrar como administrador'
-    fill_in 'E-mail', with: 'maria@leilaodogalpao.com.br'
-    fill_in 'Senha', with: 'password'
-    within('form') do
-      click_on 'Entrar'
-    end
+
     click_on 'Categorias'
     click_on 'Criar nova categoria'
     fill_in 'Nome', with: 'Cozinha'
@@ -27,13 +23,9 @@ describe 'Admin cria uma categoria' do
   it 'mas falha ao tentar criar sem um dos campos' do
     admin = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '85770404027')
 
+    login_as(admin)
     visit root_path
-    click_on 'Entrar como administrador'
-    fill_in 'E-mail', with: 'maria@leilaodogalpao.com.br'
-    fill_in 'Senha', with: 'password'
-    within('form') do
-      click_on 'Entrar'
-    end
+
     click_on 'Categorias'
     click_on 'Criar nova categoria'
     fill_in 'Nome', with: ''

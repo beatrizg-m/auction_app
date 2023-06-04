@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'User tries to bid' do
   it 'successfully' do
-    User.create!(email: 'vanessa@gmail.com', password: '123456', password_confirmation: '123456', cpf: '87777471007')
+    user = User.create!(email: 'vanessa@gmail.com', password: '123456', password_confirmation: '123456', cpf: '87777471007')
     Admin.create(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '79931180005')
     Admin.create(email: 'joao@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '85770404027')
     Category.create!(name: 'Cozinha', description: 'utensilios de cozinha')
@@ -11,13 +11,9 @@ describe 'User tries to bid' do
     Batch.create!(code: '125bsd456', start_date: Date.new(2023, 5, 17), final_date: 1.day.from_now, minimum_value: 200, minimum_difference: 50, items: [Item.first], approved: true, created_by_id: Admin.last.id, approved_by_id: Admin.first.id)
     Batch.create!(code: '123asd456', start_date: Date.new(2023, 5, 18), final_date: 1.day.from_now, minimum_value: 200, minimum_difference: 50, items: [], approved: true, created_by_id: Admin.first.id, approved_by_id: Admin.last.id)
 
+    login_as(user, :scope => :user)
     visit root_path
-    click_on 'Entrar como usuario'
-    fill_in 'Email', with: 'vanessa@gmail.com'
-    fill_in 'Senha', with: '123456'
-    within('form') do
-      click_on 'Entrar'
-    end
+
     click_on 'Lotes'
     click_on '125bsd456'
     fill_in 'Valor', with: 900
@@ -44,7 +40,7 @@ describe 'User tries to bid' do
   end
 
   it "but the bid is declined" do
-    User.create!(email: 'vanessa@gmail.com', password: '123456', password_confirmation: '123456', cpf: '87777471007')
+    user = User.create!(email: 'vanessa@gmail.com', password: '123456', password_confirmation: '123456', cpf: '87777471007')
     Admin.create(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '79931180005')
     Admin.create(email: 'joao@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '85770404027')
     Category.create!(name: 'Cozinha', description: 'utensilios de cozinha')
@@ -53,13 +49,9 @@ describe 'User tries to bid' do
     Batch.create!(code: '125bsd456', start_date: Date.new(2023, 5, 17), final_date: 1.day.from_now, minimum_value: 200, minimum_difference: 50, items: [Item.first], approved: true, created_by_id: Admin.last.id, approved_by_id: Admin.first.id)
     Batch.create!(code: '123asd456', start_date: Date.new(2023, 5, 18), final_date: Date.new(2023, 5, 21), minimum_value: 200, minimum_difference: 50, items: [], approved: true, created_by_id: Admin.first.id, approved_by_id: Admin.last.id)
 
+    login_as(user, :scope => :user)
     visit root_path
-    click_on 'Entrar como usuario'
-    fill_in 'Email', with: 'vanessa@gmail.com'
-    fill_in 'Senha', with: '123456'
-    within('form') do
-      click_on 'Entrar'
-    end
+
     click_on 'Lotes'
     click_on '125bsd456'
     fill_in 'Valor', with: 150

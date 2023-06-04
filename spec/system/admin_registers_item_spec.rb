@@ -4,14 +4,9 @@ describe 'Admin registers item for auction' do
   it 'being authenticated' do
     admin = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '85770404027')
 
-    # login_as(admin)
+    login_as(admin)
     visit root_path
-    click_on 'Entrar como administrador'
-    fill_in 'E-mail', with: 'maria@leilaodogalpao.com.br'
-    fill_in 'Senha', with: 'password'
-    within('form') do
-      click_on 'Entrar'
-    end
+
     click_on 'Itens'
     click_on 'Cadastrar Itens'
 
@@ -26,13 +21,9 @@ describe 'Admin registers item for auction' do
     cozinha = Category.create!(name: 'Cozinha', description: 'utensilios de cozinha')
     allow(SecureRandom).to receive(:alphanumeric).and_return('ABCDE12345')
 
+    login_as(admin)
     visit root_path
-    click_on 'Entrar como administrador'
-    fill_in 'E-mail', with: 'maria@leilaodogalpao.com.br'
-    fill_in 'Senha', with: 'password'
-    within('form') do
-      click_on 'Entrar'
-    end
+
     click_on 'Itens'
     click_on 'Cadastrar Itens'
     fill_in 'Nome', with: 'Caneca'

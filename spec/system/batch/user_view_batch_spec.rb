@@ -22,7 +22,7 @@ describe 'user click in batches' do
   end
 
   it 'and is authenticated as admin' do
-    Admin.create(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '79931180005')
+    admin = Admin.create(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '79931180005')
     Category.create(name: 'Cozinha', description: 'utensilios de cozinha')
     Item.create!(name: 'Caneca Hello', description: 'Caneca da Hello Kitty branca', weight: 320, width: 13, height: 25, depth: 16, category_id: 1)
     Item.create!(name: 'Blusa crooped', description: 'Blusa curta feita de lã roxa', weight: 16, width: 98, height: 60, depth: 0, category_id: 1)
@@ -31,13 +31,9 @@ describe 'user click in batches' do
     Batch.create!(code: '125bsd456', start_date: Date.new(2023, 5, 25), final_date: Date.new(2023, 5, 30), minimum_value: 200, minimum_difference: 50, items: [Item.find(2)], approved: false)
     Batch.create!(code: '005psd456', start_date: Date.new(2023, 5, 25), final_date: Date.new(2023, 5, 30), minimum_value: 200, minimum_difference: 50, items: [Item.find(2)], approved: false)
 
+    login_as(admin)
     visit root_path
-    click_on 'Entrar como administrador'
-    within('form') do
-      fill_in 'E-mail', with: 'maria@leilaodogalpao.com.br'
-      fill_in 'Senha', with: 'password'
-      click_on 'Entrar'
-    end
+
     click_on 'Lotes'
 
     expect(page).to have_content 'Editar'

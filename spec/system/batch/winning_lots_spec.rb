@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'user sees winning lots' do
   it 'successfully' do
-    User.create!(email: 'roberto@gmail.com', password: '123456', password_confirmation: '123456', cpf: '36328020090')
+    user = User.create!(email: 'roberto@gmail.com', password: '123456', password_confirmation: '123456', cpf: '36328020090')
     Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '79931180005')
     Category.create!(name: 'Cozinha', description: 'utensilios de cozinha')
     Item.create!(name: 'Caneca Hello', description: 'Caneca da Hello Kitty branca', weight: 320, width: 13, height: 25, depth: 16, category_id: 1)
@@ -12,14 +12,9 @@ describe 'user sees winning lots' do
     Batch.create!(code: '005psd456', start_date: Date.new(2023, 5, 10), final_date: Date.new(2023, 5, 15), minimum_value: 200, minimum_difference: 50, items: [Item.find(2)], approved: true, winner_id: 1)
     Bid.create(value: 300, batch_id: Batch.last.id, user_id: User.last.id)
 
-
+    login_as(user, :scope => :user)
     visit root_path
-    click_on 'Entrar como usuario'
-    fill_in 'Email', with: 'roberto@gmail.com'
-    fill_in 'Senha', with: '123456'
-    within('form') do
-      click_on 'Entrar'
-    end
+
     click_on 'Lotes'
     click_on 'Lotes Vencedores'
 

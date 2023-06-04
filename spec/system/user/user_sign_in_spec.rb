@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe 'User is authenticated' do
-  it 'com sucesso' do
-    admin = User.create!(email: 'vanessa@gmail.com', password: '123456', password_confirmation: '123456', cpf: '87777471007')
+  it 'successfully' do
+    User.create!(email: 'vanessa@gmail.com', password: '123456', password_confirmation: '123456', cpf: '87777471007')
 
     visit root_path
     click_on 'Entrar como usuario'
