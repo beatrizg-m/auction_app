@@ -29,8 +29,8 @@ class BatchesController < ApplicationController
 
   def edit
     @batch = Batch.find(params[:id])
-    if @batch.approved
-      redirect_to batches_path
+    if current_admin.id != @batch.created_by_id
+      redirect_to root_path, notice: 'Você não pode editar este lote.'
     else
       @items = Item.where(batch_id: [nil, @batch.id])
     end
