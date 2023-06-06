@@ -1,0 +1,101 @@
+.menu {
+  background-color: #2B2D42;
+  width: 100vw;
+  height: 80px;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.menu a {
+  color: #f1f1f1;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.menu a:hover {
+  color: #56A3A6;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #f1f1f1;
+}
+
+button {
+  display: inline-block;
+  border: none;
+  padding: 8px 24px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 4px;
+  letter-spacing: 1.5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Estilo padrão do botão */
+button.default {
+  color: #2B2D42;
+  background-color: #f1f1f1;
+}
+/* f2cd60 */
+
+
+button.default:hover {
+  background-color: #820933;
+  color: #f1f1f1;
+}
+
+
+button.default:active {
+  background-color: #3e8e41;
+}
+
+
+button.default:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+input[type="text"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #4c9aff;
+  box-shadow: 0 2px 8px rgba(76, 154, 255, 0.5);
+}
+
+input[type="submit"] {
+  display: inline-block;
+  border: none;
+  padding: 8px 24px;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 4px;
+  letter-spacing: 1.5px;
+  transition: background-color 0.3s ease;
+  color: #2B2D42;
+  background-color: #f1f1f1;
+
+  &:hover {
+    background-color: #56A3A6;
+    color: #f1f1f1;
+  }
+}

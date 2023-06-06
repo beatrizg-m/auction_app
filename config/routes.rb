@@ -5,10 +5,9 @@ Rails.application.routes.draw do
   resources :items, only:[:index, :new, :create]
   resources :categories, only:[:new, :create, :index]
   resources :batches, only:[:index, :new, :create, :edit, :show, :update, :destroy] do
-    member do
-      put :approve
-      put :close
-    end
+    put :approve, on: :member
+    put :close, on: :member
+    get :search, on: :collection
   end
 
   post '/place-a-bid', to: 'bids#create'

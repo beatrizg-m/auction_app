@@ -1,0 +1,6 @@
+<p><%= @batches.count %> <%= Batch.model_name.human(count: @batches.count).downcase%>
+<%= I18n.t(:found, count: @batches.count).downcase%> </p>
+<% @batches.each do |b|%>
+  <%= Batch.human_attribute_name(:code)%>: <%= b.code %>
+
+<% end %>

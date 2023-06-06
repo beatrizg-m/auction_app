@@ -26,7 +26,7 @@ describe 'Admin create a batch' do
 
     click_on 'Lotes'
     click_on 'Criar lote'
-    fill_in 'Codigo', with: '123abc456'
+    fill_in 'Código', with: '123abc456'
     fill_in 'Data de início', with: '20/12/2023'
     fill_in 'Data final', with: '20/01/2024'
     fill_in 'Valor mínimo do lance', with: 200
@@ -52,7 +52,7 @@ describe 'Admin create a batch' do
 
     click_on 'Lotes'
     click_on 'Criar lote'
-    fill_in 'Codigo', with: '1b456'
+    fill_in 'Código', with: '1b456'
     fill_in 'Data de início', with: '20/12/2023'
     fill_in 'Data final', with: '20/01/2024'
     fill_in 'Valor mínimo do lance', with: 200

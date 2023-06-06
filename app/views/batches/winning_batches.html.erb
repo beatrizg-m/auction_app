@@ -1,10 +1,14 @@
-<% @batches.each do |b|%>
-  <dt>Codigo do lote:<%= link_to(b.code, batch_path(b.id)) %></dt>
-  <% b.items.each do |item|%>
-    <ul>
-      <li><%= item.name %></li>
-    </ul>
+<%= stylesheet_link_tag "batches-page" %>
+<div class="batches-page">
+  <% @batches.each do |b|%>
+    <div class="card">
+      <div class="card-header">Lote <%= b.code %></div>
+      <div class="card-body">
+        <p>Vencedor: <%= b.winner.email %></p>
+      </div>
+      <div class="card-footer">
+        <%= button_to 'Detalhes', batch_path(b.id), class: 'default', method: :get %>
+      </div>
+    </div>
   <% end %>
-
-  <h4>Vencedor: <%= b.winner.email %></h4>
-<% end %>
+</div>

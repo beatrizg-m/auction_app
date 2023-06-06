@@ -86,6 +86,11 @@ class BatchesController < ApplicationController
     redirect_to batches_path
   end
 
+  def search
+    @code = params['query']
+    @batches = Batch.where("code LIKE ?", "%#{@code}%")
+  end
+
   private
 
   def batch_params

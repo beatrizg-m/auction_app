@@ -1,10 +1,12 @@
 pt-BR:
   activerecord:
     models:
-      batch: 'Lote'
+      batch:
+        one: 'Lote'
+        other: 'Lotes'
     attributes:
       batch:
-        code: 'Codigo'
+        code: 'Código'
         start_date: 'Data de início'
         final_date: 'Data final'
         minimum_value: 'Valor mínimo do lance'
