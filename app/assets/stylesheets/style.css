@@ -64,7 +64,7 @@ button.default:disabled {
 }
 
 
-input[type="text"] {
+input[type="text"], input[type="number"] {
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -73,7 +73,7 @@ input[type="text"] {
   transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus, input[type="number"]:focus {
   outline: none;
   border-color: #4c9aff;
   box-shadow: 0 2px 8px rgba(76, 154, 255, 0.5);
