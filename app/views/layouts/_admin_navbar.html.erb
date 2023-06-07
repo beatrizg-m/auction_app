@@ -1,10 +1,10 @@
 <%= link_to('Itens', items_path)%>
 <%= link_to('Categorias', categories_path)%>
-<%= current_admin.full_description %>
-<%= button_to 'Sair', destroy_admin_session_path, method: :delete, class: "default" %>
 <div class="form_busca">
   <%= form_with(url: search_batches_path, method: :get) do |f|%>
     <%= f.text_field :query, placeholder: 'Buscar Lote', class: "test" %>
     <%= f.submit 'Buscar', class: "default" %>
   <% end %>
 </div>
+<%= current_admin.full_description %>
+<%= button_to 'Sair', destroy_admin_session_path, method: :delete, class: "default" %>

@@ -1,3 +1,7 @@
+header {
+  overflow: hidden;
+}
+
 .menu {
   background-color: #2B2D42;
   width: 100vw;
@@ -63,9 +67,19 @@ button.default:disabled {
   cursor: not-allowed;
 }
 
+button.default-secondary {
+  color: #f1f1f1;
+  background-color: #2B2D42;
+}
+
+button.default-secondary:hover {
+  background-color: #56A3A6;
+  color: #2B2D42;
+}
+
 
 input[type="text"], input[type="number"] {
-  padding: 8px;
+  padding: 6px 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;

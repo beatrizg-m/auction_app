@@ -1,0 +1,22 @@
+.buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.batches-page-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  align-items: center;
+  gap: 16px;
+}
+
+.batches-section {
+  width: 100%;
+}
+
+.batches-section-title {
+  text-align: center;
+  font-weight: bold;
+}

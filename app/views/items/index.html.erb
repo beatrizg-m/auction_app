@@ -1,43 +1,39 @@
-<h1>Itens Cadastrados</h1>
+<div class="top-header-row">
+  <h1>Itens Cadastrados</h1>
+  <%= link_to('Cadastrar Itens', new_item_path)%>
+</div>
+<div class="batches-page">
+  <% @items.each do |i|%>
+    <div class="card">
+      <p>
+        <%= Item.human_attribute_name(:name)%>:
+        <%=i.name%>
+      </p>
+      <p>
+        <%= Item.human_attribute_name(:code)%>:
+        <%=i.code%>
+      </p>
+      <p>
+        <%= Item.human_attribute_name(:description)%>:
+        <%=i.description%>
+      </p>
+      <p>
+        <%= Item.human_attribute_name(:weight)%>:
+        <%=i.weight%>
+      </p>
+      <p>
+        <%= Item.human_attribute_name(:dimensions)%>:
+        <%=i.full_dimensions%>
+      </p>
+      <p>
+        <%= Item.human_attribute_name(:category_name)%>:
+        <%= i.category.name%>
+      </p>
+      <p>
+        <%= Item.human_attribute_name(:code)%>:
+        <%=i.code%>
+      </p>
+    </div>
+  <% end %>
+</div>
 
-<% @items.each do |i|%>
-  <dl>
-    <dt><%= Item.human_attribute_name(:name)%>:
-      <%=i.name%>
-    </dt>
-
-    <dt><%= Item.human_attribute_name(:code)%>:
-      <%=i.code%>
-    </dt>
-
-    <dt><%= Item.human_attribute_name(:description)%>:
-      <%=i.description%>
-    </dt>
-
-    <dt><%= Item.human_attribute_name(:weight)%>:
-      <%=i.weight%>
-    </dt>
-
-    <dt><%= Item.human_attribute_name(:width)%>:
-      <%=i.width%>
-    </dt>
-
-    <dt><%= Item.human_attribute_name(:height)%>:
-      <%=i.height%>
-    </dt>
-
-    <dt><%= Item.human_attribute_name(:depth)%>:
-      <%=i.depth%>
-    </dt>
-
-    <dt><%= Item.human_attribute_name(:category_name)%>:
-      <%=i.category.name%>
-    </dt>
-
-    <dt><%= Item.human_attribute_name(:code)%>:
-      <%=i.code%>
-    </dt>
-  </dl>
-<% end %>
-
-<%= link_to('Cadastrar Itens', new_item_path)%>
