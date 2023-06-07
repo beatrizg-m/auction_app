@@ -10,6 +10,7 @@
 
   <header>
     <nav class="menu">
+      <%= link_to('Lotes', batches_path)%>
       <% if admin_signed_in? %>
         <%= render "layouts/admin_navbar" %>
       <% elsif user_signed_in? %>
@@ -20,7 +21,6 @@
         <%= link_to('Entrar como Administrador', new_admin_session_path)%>
         <%= link_to('Cadastrar Administrador', new_admin_registration_path)%>
       <% end %>
-      <%= link_to('Lotes', batches_path)%>
     </nav>
   </header>
   <div>

@@ -31,8 +31,8 @@
         <% @batch.items.each do |i|%>
           <li class="list-item">
           <p><%= Item.human_attribute_name(:name)%>: <%= i.name %></p>
-          <p><%= Item.human_attribute_name(:description)%>:<%= i.description %></p>
-          <p><%= Item.human_attribute_name(:dimensions)%>:<%=i.full_dimensions%></p>
+          <p><%= Item.human_attribute_name(:description)%>: <%= i.description %></p>
+          <p><%= Item.human_attribute_name(:dimensions)%>: <%=i.full_dimensions%></p>
           </li>
         <% end %>
       </ul>

@@ -13,8 +13,8 @@ describe 'user sees details of a batch' do
     click_on '123asd456'
 
     expect(page).to have_content 'Detalhes do lote'
-    expect(page).to have_content 'Data de início: 2023-05-18'
-    expect(page).to have_content 'Dimensões: 13cm X 25cm X 16cm'
+    expect(page).to have_content "Data de início:\n2023-05-18"
+    expect(page).to have_content "Dimensões: 13cm X 25cm X 16cm"
     expect(page).not_to have_content 'Blusa crooped'
     expect(page).not_to have_content 'Caneca HA'
   end
