@@ -40,9 +40,7 @@ describe 'Admin registers item for auction' do
     expect(page).to have_content 'Nome: Caneca'
     expect(page).to have_content 'Descrição: Caneca feita de porcelana'
     expect(page).to have_content 'Peso: 10'
-    expect(page).to have_content 'Largura: 20'
-    expect(page).to have_content 'Altura: 25'
-    expect(page).to have_content 'Profundidade: 20'
+    expect(page).to have_content 'Dimensões: 20cm X 25cm X 20cm'
     expect(page).to have_content 'Categoria: Cozinha'
   end
 end

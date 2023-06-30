@@ -1,7 +1,11 @@
 <div class="batches-page-container">
   <% if admin_signed_in? %>
-    <%= link_to('Criar lote', new_batch_path)%>
-    <%= link_to('Lotes vencidos', finished_batches_path)%>
+    <div class="batches-create">
+      <h1 class="header-title">Lotes</h1>
+
+      <a href="<%= new_batch_path %>" class="button">Criar lote</a>
+      <a href="<%= finished_batches_path %>" class="button">Lotes vencidos</a>
+    </div>
     <div class="batches-section">
       <% @batches.each do |batch|%>
         <div class="container">

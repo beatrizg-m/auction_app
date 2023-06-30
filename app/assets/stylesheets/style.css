@@ -48,19 +48,15 @@ button.default {
   color: #2B2D42;
   background-color: #f1f1f1;
 }
-/* f2cd60 */
-
 
 button.default:hover {
   background-color: #820933;
   color: #f1f1f1;
 }
 
-
 button.default:active {
   background-color: #3e8e41;
 }
-
 
 button.default:disabled {
   opacity: 0.6;
