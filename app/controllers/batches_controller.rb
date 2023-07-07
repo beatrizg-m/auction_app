@@ -1,5 +1,5 @@
 class BatchesController < ApplicationController
-  before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy, :close, :show_finished_batches]
+  before_action :require_admin!, only: [:new, :create, :edit, :update, :destroy, :close, :show_finished_batches]
   before_action :authenticate_user_or_admin!, only: [:winning_batches]
 
   def index
@@ -13,7 +13,7 @@ class BatchesController < ApplicationController
 
   def create
     @batch = Batch.new(batch_params)
-    @batch.created_by_id = current_admin.id
+    @batch.created_by_id = current_user.id
     if @batch.save
       redirect_to batches_path, notice: 'Lote cadastrado esperando por aprovação.'
     else
@@ -98,7 +98,7 @@ class BatchesController < ApplicationController
   end
 
   def authenticate_user_or_admin!
-    unless current_user || current_admin
+    unless current_user.admin? || current_user.user?
       redirect_to root_path, notice: 'Acesso negado.'
     end
   end

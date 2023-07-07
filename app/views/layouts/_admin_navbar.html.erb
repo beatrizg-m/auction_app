@@ -6,5 +6,5 @@
     <%= f.submit 'Buscar', class: "default" %>
   <% end %>
 </div>
-<%= current_admin.full_description %>
-<%= button_to 'Sair', destroy_admin_session_path, method: :delete, class: "default" %>
+<%= current_user.full_description%>
+<%= button_to 'Sair', destroy_user_session_path, method: :delete, class: "default" %>

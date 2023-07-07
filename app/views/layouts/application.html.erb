@@ -11,15 +11,13 @@
   <header>
     <nav class="menu">
       <%= link_to('Lotes', batches_path)%>
-      <% if admin_signed_in? %>
+      <% if user_signed_in? && current_user.admin? %>
         <%= render "layouts/admin_navbar" %>
-      <% elsif user_signed_in? %>
+      <% elsif user_signed_in? && current_user.user? %>
         <%= render "layouts/user_navbar" %>
       <% else %>
-        <%= link_to('Entrar como Usuário', new_user_session_path)%>
+        <%= link_to('Entrar', new_user_session_path)%>
         <%= link_to('Cadastrar-se', new_user_registration_path)%>
-        <%= link_to('Entrar como Administrador', new_admin_session_path)%>
-        <%= link_to('Cadastrar Administrador', new_admin_registration_path)%>
       <% end %>
     </nav>
   </header>
