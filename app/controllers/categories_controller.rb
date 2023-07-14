@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 class CategoriesController < ApplicationController
   before_action :require_admin!
 
   def index
     @categories = Category.all
-    if @categories.empty?
-      flash[:notice] = 'Não há categorias cadastradas.'
-    end
+    return unless @categories.empty?
+
+    flash[:notice] = 'Não há categorias cadastradas.'
   end
 
   def new
@@ -25,6 +27,6 @@ class CategoriesController < ApplicationController
   private
 
   def category_params
-    category_params = params.require(:category).permit(:name, :description)
+    params.require(:category).permit(:name, :description)
   end
 end

@@ -1,7 +1,8 @@
-require "rails_helper"
+# frozen_string_literal: true
+
+require 'rails_helper'
 
 describe 'Admin register' do
-
   it 'successfully' do
     visit root_path
     click_on 'Cadastrar-se'
@@ -17,7 +18,8 @@ describe 'Admin register' do
   end
 
   it 'with existing CPF' do
-    ad = User.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '85770404027')
+    User.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password',
+                 cpf: '85770404027')
 
     visit root_path
     click_on 'Cadastrar-se'
@@ -32,5 +34,4 @@ describe 'Admin register' do
     expect(current_path).to eq '/users'
     expect(page).not_to have_content 'Bem vindo! Você realizou seu registro com sucesso.'
   end
-
 end

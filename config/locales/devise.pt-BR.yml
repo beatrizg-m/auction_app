@@ -28,6 +28,7 @@ pt-BR:
         cpf: CPF
         sign_up: Inscrever-se
         log_in: Entrar
+        name: Nome
     models:
       user:
         one: Usuário

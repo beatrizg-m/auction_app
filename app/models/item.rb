@@ -13,6 +13,4 @@ class Item < ApplicationRecord
   def generate_code
     self.code = SecureRandom.alphanumeric(10).upcase
   end
-
-
 end

@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'User register' do
-
   it 'with existing CPF' do
-    user = User.create!(email: 'maria@gmail.com.br', password: 'password', password_confirmation: 'password', cpf: '85770404027')
+    User.create!(email: 'maria@gmail.com.br', password: 'password', password_confirmation: 'password',
+                 cpf: '85770404027')
 
     visit root_path
     click_on 'Cadastrar-se'
@@ -22,7 +24,6 @@ describe 'User register' do
   end
 
   it 'successfully' do
-
     visit root_path
     click_on 'Cadastrar-se'
     fill_in 'Nome', with: 'João'
@@ -37,5 +38,4 @@ describe 'User register' do
     expect(current_path).to eq root_path
     expect(page).not_to have_content 'CPF já esta em uso'
   end
-
 end

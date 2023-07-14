@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ItemsController < ApplicationController
-  before_action :authenticate_admin!
+  before_action :require_admin!
 
   def index
     @items = Item.all
@@ -23,6 +25,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    item_params = params.require(:item).permit(:name, :description, :weight, :width, :height, :depth, :category_id, :code)
+    params.require(:item).permit(:name, :description, :weight, :width, :height, :depth, :category_id,
+                                 :code)
   end
 end

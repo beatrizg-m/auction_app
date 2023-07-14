@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   devise_for :users
   root to: 'home#index'
-  resources :items, only:[:index, :new, :create]
-  resources :categories, only:[:new, :create, :index]
-  resources :batches, only:[:index, :new, :create, :edit, :show, :update, :destroy] do
+  resources :items, only: %i[index new create]
+  resources :categories, only: %i[new create index]
+  resources :batches, only: %i[index new create edit show update destroy] do
     put :approve, on: :member
     put :close, on: :member
     get :search, on: :collection
