@@ -46,13 +46,13 @@
         <p class="detail-label"><%= Batch.human_attribute_name(:batch_created)%>:
         </p>
         <p class="detail-value">
-          <%= Admin.find(@batch.created_by_id).email%>
+          <%= User.find(@batch.created_by_id).email%>
         </p>
       </div>
       <% if @batch.approved %>
       <div class="detail-item">
         <p class="detail-label"><%= Batch.human_attribute_name(:batch_approved)%>:</p>
-        <p class="detail-value"><%= Admin.find(@batch.approved_by_id).email%></p>
+        <p class="detail-value"><%= User.find(@batch.approved_by_id).email%></p>
       </div>
       <% else %>
         <p><strong>Lote aguardando aprovaçao</p>

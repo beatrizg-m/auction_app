@@ -12,21 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 20_230_524_204_856) do
-  create_table 'admins', force: :cascade do |t|
-    t.string 'email', default: '', null: false
-    t.string 'encrypted_password', default: '', null: false
-    t.string 'reset_password_token'
-    t.datetime 'reset_password_sent_at'
-    t.datetime 'remember_created_at'
-    t.string 'cpf'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.string 'name'
-    t.index ['email'], name: 'index_admins_on_email', unique: true
-    t.index ['reset_password_token'], name: 'index_admins_on_reset_password_token', unique: true
-  end
-
+ActiveRecord::Schema[7.0].define(version: 20_230_714_165_209) do
   create_table 'batches', force: :cascade do |t|
     t.string 'code'
     t.date 'start_date'
@@ -35,9 +21,9 @@ ActiveRecord::Schema[7.0].define(version: 20_230_524_204_856) do
     t.integer 'minimum_difference'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
+    t.boolean 'approved', default: false
     t.integer 'approved_by_id'
     t.integer 'created_by_id'
-    t.boolean 'approved', default: false
     t.integer 'winner_id'
     t.index ['approved_by_id'], name: 'index_batches_on_approved_by_id'
     t.index ['created_by_id'], name: 'index_batches_on_created_by_id'
@@ -84,15 +70,16 @@ ActiveRecord::Schema[7.0].define(version: 20_230_524_204_856) do
     t.datetime 'reset_password_sent_at'
     t.datetime 'remember_created_at'
     t.string 'cpf'
+    t.string 'name'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.string 'name'
+    t.integer 'role'
     t.index ['email'], name: 'index_users_on_email', unique: true
     t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end
 
-  add_foreign_key 'batches', 'admins', column: 'approved_by_id'
-  add_foreign_key 'batches', 'admins', column: 'created_by_id'
+  add_foreign_key 'batches', 'users', column: 'approved_by_id'
+  add_foreign_key 'batches', 'users', column: 'created_by_id'
   add_foreign_key 'batches', 'users', column: 'winner_id'
   add_foreign_key 'bids', 'batches'
   add_foreign_key 'bids', 'users'

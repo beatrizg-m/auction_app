@@ -4,13 +4,14 @@ require 'rails_helper'
 
 describe 'Admin cria uma categoria' do
   it 'com sucesso' do
-    admin = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password',
-                          password_confirmation: 'password', cpf: '85770404027')
+    admin = User.create!(name: 'maria', email: 'maria@leilaodogalpao.com.br', password: 'password',
+                         password_confirmation: 'password', cpf: '57952492039')
 
     login_as(admin)
     visit root_path
-
-    click_on 'Categorias'
+    within('nav') do
+      click_on 'Categorias'
+    end
     click_on 'Criar nova categoria'
     fill_in 'Nome', with: 'Cozinha'
     fill_in 'Descrição', with: 'Utensilios para cozinha'
@@ -24,8 +25,8 @@ describe 'Admin cria uma categoria' do
   end
 
   it 'mas falha ao tentar criar sem um dos campos' do
-    admin = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password',
-                          password_confirmation: 'password', cpf: '85770404027')
+    admin = User.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password',
+                         cpf: '85770404027')
 
     login_as(admin)
     visit root_path

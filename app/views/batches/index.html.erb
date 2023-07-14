@@ -1,5 +1,6 @@
 <div class="batches-page-container">
-  <% if admin_signed_in? %>
+
+  <% if user_signed_in? && current_user.admin? %>
     <div class="batches-create">
       <h1 class="header-title">Lotes</h1>
 
@@ -35,9 +36,7 @@
     </div>
   <% end %>
 
-
-
-  <% if !admin_signed_in? %>
+  <% if !user_signed_in? || !current_user.admin? %>
     <div class="batches-section">
       <h4 class="batches-section-title">Lotes futuros</h4>
 

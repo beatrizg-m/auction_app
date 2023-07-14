@@ -1,11 +1,12 @@
 pt-BR:
   activerecord:
     models:
-      user: 'Usuário'
+      user: Usuário
     attributes:
-      user:
-        name: 'Nome'
-        email: 'Email'
-        password: 'Senha'
-        cpf: 'CPF'
-        password_confirmation: 'Confirme sua senha'
+      name: Nome
+      email: Email
+      password: Senha
+      cpf: CPF
+      password_confirmation: Confirme sua senha
+      sing-up: Inscrever-se
+      log_in: Entrar

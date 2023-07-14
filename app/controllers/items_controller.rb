@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ItemsController < ApplicationController
-  before_action :authenticate_admin!
+  before_action :require_admin!
 
   def index
     @items = Item.all
