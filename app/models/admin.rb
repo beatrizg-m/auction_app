@@ -1,15 +1,16 @@
-class Admin < ApplicationRecord
+# frozen_string_literal: true
 
-  validates :email, presence: true, format: { with: /\b[\w\.-]+@leilaodogalpao\.com\.br\b/}
+class Admin < ApplicationRecord
+  validates :email, presence: true, format: { with: /\b[\w.-]+@leilaodogalpao\.com\.br\b/ }
   validate :valid_cpf
 
   def valid_cpf
-    unless CPF.valid?(cpf)
-      errors.add(:cpf, 'já esta em uso')
-    end
+    return if CPF.valid?(cpf)
+
+    errors.add(:cpf, 'já esta em uso')
   end
 
-  validates_uniqueness_of :cpf, :message => 'já esta em uso'
+  validates_uniqueness_of :cpf, message: 'já esta em uso'
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

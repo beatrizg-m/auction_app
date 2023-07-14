@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Item < ApplicationRecord
   belongs_to :category
   belongs_to :batch, optional: true
@@ -13,6 +15,4 @@ class Item < ApplicationRecord
   def generate_code
     self.code = SecureRandom.alphanumeric(10).upcase
   end
-
-
 end

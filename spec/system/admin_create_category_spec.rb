@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'Admin cria uma categoria' do
   it 'com sucesso' do
-    admin = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '85770404027')
+    admin = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password',
+                          password_confirmation: 'password', cpf: '85770404027')
 
     login_as(admin)
     visit root_path
@@ -21,7 +24,8 @@ describe 'Admin cria uma categoria' do
   end
 
   it 'mas falha ao tentar criar sem um dos campos' do
-    admin = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '85770404027')
+    admin = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password',
+                          password_confirmation: 'password', cpf: '85770404027')
 
     login_as(admin)
     visit root_path

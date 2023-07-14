@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'Admin create a batch' do
   it 'being authenticated' do
-    admin = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '85770404027')
+    admin = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password',
+                          password_confirmation: 'password', cpf: '85770404027')
 
     login_as(admin)
     visit root_path
@@ -15,11 +18,15 @@ describe 'Admin create a batch' do
   end
 
   it 'successfully' do
-    admin = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '85770404027')
+    admin = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password',
+                          password_confirmation: 'password', cpf: '85770404027')
     Category.create(name: 'Cozinha', description: 'utensilios de cozinha')
-    Item.create!(name: 'Caneca Hello', description: 'Caneca da Hello Kitty branca', weight: 320, width: 13, height: 25, depth: 16, category_id: 1)
-    c1 = Item.create!(name: 'Blusa crooped', description: 'Blusa curta feita de lã roxa', weight: 16, width: 98, height: 60, depth: 0, category_id: 1)
-    c2 = Item.create!(name: 'Caneca HA', description: 'Caneca do homem aranha feita de porcelana pintada', weight: 300, width: 10, height: 20, depth: 16, category_id: 1)
+    Item.create!(name: 'Caneca Hello', description: 'Caneca da Hello Kitty branca', weight: 320, width: 13, height: 25,
+                 depth: 16, category_id: 1)
+    Item.create!(name: 'Blusa crooped', description: 'Blusa curta feita de lã roxa', weight: 16, width: 98,
+                 height: 60, depth: 0, category_id: 1)
+    Item.create!(name: 'Caneca HA', description: 'Caneca do homem aranha feita de porcelana pintada', weight: 300,
+                 width: 10, height: 20, depth: 16, category_id: 1)
 
     login_as(admin)
     visit root_path
@@ -41,11 +48,15 @@ describe 'Admin create a batch' do
   end
 
   it 'With non-standard code' do
-    admin = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '85770404027')
+    admin = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password',
+                          password_confirmation: 'password', cpf: '85770404027')
     Category.create(name: 'Cozinha', description: 'utensilios de cozinha')
-    Item.create!(name: 'Caneca Hello', description: 'Caneca da Hello Kitty branca', weight: 320, width: 13, height: 25, depth: 16, category_id: 1)
-    c1 = Item.create!(name: 'Blusa crooped', description: 'Blusa curta feita de lã roxa', weight: 16, width: 98, height: 60, depth: 0, category_id: 1)
-    c2 = Item.create!(name: 'Caneca HA', description: 'Caneca do homem aranha feita de porcelana pintada', weight: 300, width: 10, height: 20, depth: 16, category_id: 1)
+    Item.create!(name: 'Caneca Hello', description: 'Caneca da Hello Kitty branca', weight: 320, width: 13, height: 25,
+                 depth: 16, category_id: 1)
+    Item.create!(name: 'Blusa crooped', description: 'Blusa curta feita de lã roxa', weight: 16, width: 98,
+                 height: 60, depth: 0, category_id: 1)
+    Item.create!(name: 'Caneca HA', description: 'Caneca do homem aranha feita de porcelana pintada', weight: 300,
+                 width: 10, height: 20, depth: 16, category_id: 1)
 
     login_as(admin)
     visit root_path
@@ -66,13 +77,19 @@ describe 'Admin create a batch' do
   end
 
   it 'and needs approval from another admin' do
-    maria = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '85770404027')
-    joao = Admin.create(email: 'joao@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '87777471007')
+    Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password',
+                  password_confirmation: 'password', cpf: '85770404027')
+    joao = Admin.create(email: 'joao@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password',
+                        cpf: '87777471007')
     Category.create(name: 'Cozinha', description: 'utensilios de cozinha')
-    Item.create!(name: 'Caneca Hello', description: 'Caneca da Hello Kitty branca', weight: 320, width: 13, height: 25, depth: 16, category_id: 1)
-    Item.create!(name: 'Blusa crooped', description: 'Blusa curta feita de lã roxa', weight: 16, width: 98, height: 60, depth: 0, category_id: 1)
-    Item.create!(name: 'Caneca HA', description: 'Caneca do homem aranha feita de porcelana pintada', weight: 300, width: 10, height: 20, depth: 16, category_id: 1)
-    Batch.create!(code: '005psd456', start_date: Date.new(2023, 5, 10), final_date: Date.new(2023, 5, 15), minimum_value: 200, minimum_difference: 50, items: [Item.last], approved: false, created_by_id: Admin.last.id)
+    Item.create!(name: 'Caneca Hello', description: 'Caneca da Hello Kitty branca', weight: 320, width: 13, height: 25,
+                 depth: 16, category_id: 1)
+    Item.create!(name: 'Blusa crooped', description: 'Blusa curta feita de lã roxa', weight: 16, width: 98, height: 60,
+                 depth: 0, category_id: 1)
+    Item.create!(name: 'Caneca HA', description: 'Caneca do homem aranha feita de porcelana pintada', weight: 300,
+                 width: 10, height: 20, depth: 16, category_id: 1)
+    Batch.create!(code: '005psd456', start_date: Date.new(2023, 5, 10), final_date: Date.new(2023, 5, 15),
+                  minimum_value: 200, minimum_difference: 50, items: [Item.last], approved: false, created_by_id: Admin.last.id)
 
     login_as(joao)
     visit root_path
@@ -85,13 +102,19 @@ describe 'Admin create a batch' do
   end
 
   it 'and can no longer edit after approval' do
-    maria = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '85770404027')
-    joao = Admin.create(email: 'joao@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '87777471007')
+    maria = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password',
+                          password_confirmation: 'password', cpf: '85770404027')
+    Admin.create(email: 'joao@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password',
+                 cpf: '87777471007')
     Category.create(name: 'Cozinha', description: 'utensilios de cozinha')
-    Item.create!(name: 'Caneca Hello', description: 'Caneca da Hello Kitty branca', weight: 320, width: 13, height: 25, depth: 16, category_id: 1)
-    Item.create!(name: 'Blusa crooped', description: 'Blusa curta feita de lã roxa', weight: 16, width: 98, height: 60, depth: 0, category_id: 1)
-    Item.create!(name: 'Caneca HA', description: 'Caneca do homem aranha feita de porcelana pintada', weight: 300, width: 10, height: 20, depth: 16, category_id: 1)
-    Batch.create!(code: '005psd456', start_date: Date.new(2023, 5, 10), final_date: Date.new(2023, 5, 15), minimum_value: 200, minimum_difference: 50, items: [Item.last], approved: false, created_by_id: Admin.last.id)
+    Item.create!(name: 'Caneca Hello', description: 'Caneca da Hello Kitty branca', weight: 320, width: 13, height: 25,
+                 depth: 16, category_id: 1)
+    Item.create!(name: 'Blusa crooped', description: 'Blusa curta feita de lã roxa', weight: 16, width: 98, height: 60,
+                 depth: 0, category_id: 1)
+    Item.create!(name: 'Caneca HA', description: 'Caneca do homem aranha feita de porcelana pintada', weight: 300,
+                 width: 10, height: 20, depth: 16, category_id: 1)
+    Batch.create!(code: '005psd456', start_date: Date.new(2023, 5, 10), final_date: Date.new(2023, 5, 15),
+                  minimum_value: 200, minimum_difference: 50, items: [Item.last], approved: false, created_by_id: Admin.last.id)
 
     login_as(maria)
     visit root_path
@@ -103,5 +126,4 @@ describe 'Admin create a batch' do
     expect(page).not_to have_content 'Editar Itens'
     expect(current_path).to eq batches_path
   end
-
 end

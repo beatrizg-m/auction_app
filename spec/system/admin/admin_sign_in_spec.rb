@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'Admin authenticates' do
   it 'successfully' do
-    admin = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '11965580432')
+    Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password',
+                  password_confirmation: 'password', cpf: '11965580432')
 
     visit root_path
     click_on 'Entrar como Administrador'
@@ -21,7 +24,8 @@ describe 'Admin authenticates' do
   end
 
   it "but you don't have the correct domain" do
-    admin = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '11965580432')
+    Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password',
+                  password_confirmation: 'password', cpf: '11965580432')
 
     visit root_path
     click_on 'Entrar como Administrador'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   validates :email, presence: true, format: { with: /\A[^@]+@(?!.*leilaodogalpao)[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\z/ }
   has_many :bids
@@ -5,12 +7,12 @@ class User < ApplicationRecord
   validate :valid_cpf
 
   def valid_cpf
-    unless CPF.valid?(cpf) && Admin.where(cpf: cpf).count == 0
-      errors.add(:cpf, 'já esta em uso')
-    end
+    return if CPF.valid?(cpf) && Admin.where(cpf:).count.zero?
+
+    errors.add(:cpf, 'já esta em uso')
   end
 
-  validates_uniqueness_of :cpf, :message => 'já esta em uso'
+  validates_uniqueness_of :cpf, message: 'já esta em uso'
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

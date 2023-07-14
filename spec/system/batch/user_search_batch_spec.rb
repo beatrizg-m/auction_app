@@ -1,11 +1,13 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe 'user searches for a batch' do
   it 'and must be authenticated' do
     user = User.create(name: 'Roberto', email: 'roberto@gmail.com', password: '123456',
-                      password_confirmation: '123456', cpf: '36328020090')
+                       password_confirmation: '123456', cpf: '36328020090')
 
-    login_as(user, :scope => :user)
+    login_as(user, scope: :user)
     visit root_path
 
     within('header nav') do
@@ -21,9 +23,9 @@ describe 'user searches for a batch' do
                           minimum_value: 200, minimum_difference: 50, items: [], approved: true,
                           created_by_id: admin, approved_by_id: Admin.last.id)
     user = User.create(name: 'Roberto', email: 'roberto@gmail.com', password: '123456',
-                      password_confirmation: '123456', cpf: '36328020090')
+                       password_confirmation: '123456', cpf: '36328020090')
 
-    login_as(user, :scope => :user)
+    login_as(user, scope: :user)
     visit root_path
     fill_in 'Buscar Lote', with: batch.code
     click_on 'Buscar'
@@ -35,6 +37,4 @@ describe 'user searches for a batch' do
       expect(page).to have_button('Buscar')
     end
   end
-
-
 end

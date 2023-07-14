@@ -1,4 +1,6 @@
-require "rails_helper"
+# frozen_string_literal: true
+
+require 'rails_helper'
 
 describe 'Admin register' do
   it 'successfully' do
@@ -16,7 +18,8 @@ describe 'Admin register' do
   end
 
   it 'with existing CPF' do
-    ad = Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '85770404027')
+    Admin.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password',
+                  cpf: '85770404027')
 
     visit root_path
     click_on 'Cadastrar Administrador'

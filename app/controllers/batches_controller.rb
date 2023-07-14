@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class BatchesController < ApplicationController
-  before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy, :close, :show_finished_batches]
+  before_action :authenticate_admin!, only: %i[new create edit update destroy close show_finished_batches]
   before_action :authenticate_user_or_admin!, only: [:winning_batches]
 
   def index
@@ -8,7 +10,7 @@ class BatchesController < ApplicationController
 
   def new
     @batch = Batch.new
-    @items = Item.where(:batch_id => nil)
+    @items = Item.where(batch_id: nil)
   end
 
   def create
@@ -17,7 +19,7 @@ class BatchesController < ApplicationController
     if @batch.save
       redirect_to batches_path, notice: 'Lote cadastrado esperando por aprovação.'
     else
-      @items = Item.where(:batch_id => nil)
+      @items = Item.where(batch_id: nil)
       flash[:notice] = 'Não foi possível cadastrar o lote'
       render 'new'
     end
@@ -40,25 +42,24 @@ class BatchesController < ApplicationController
     @batch = Batch.find(params[:id])
     if @batch.update(batch_params)
       redirect_to batches_path, notice: 'lote atulizado'
-     else
+    else
       flash[:notice] = 'nao foi possivel atualizar o lote'
       render 'edit'
     end
-
   end
 
   def destroy
     @batch = Batch.find(params[:id])
     @batch.delete
-    redirect_to finished_batches_path, notice: "Lote cancelado com sucesso"
+    redirect_to finished_batches_path, notice: 'Lote cancelado com sucesso'
   end
 
   def show_finished_batches
-    @batches = Batch.all.filter {|batch| batch.finished? || !batch.winner}
+    @batches = Batch.all.filter { |batch| batch.finished? || !batch.winner }
   end
 
   def winning_batches
-    @batches = Batch.all.filter {|batch| batch.winner}
+    @batches = Batch.all.filter(&:winner)
   end
 
   def close
@@ -68,7 +69,6 @@ class BatchesController < ApplicationController
     @batch.save
   end
 
-
   def approve
     @batch = Batch.find(params[:id])
     if current_admin.id != @batch.created_by_id
@@ -77,8 +77,8 @@ class BatchesController < ApplicationController
       begin
         @batch.save!
         flash[:notice] = "Lote #{@batch.code} aprovado com sucesso"
-      rescue => exception
-        flash[:notice] = exception
+      rescue StandardError => e
+        flash[:notice] = e
       end
     else
       flash[:notice] = 'Apenas outro administrador pode aprovar o lote'
@@ -88,19 +88,19 @@ class BatchesController < ApplicationController
 
   def search
     @code = params['query']
-    @batches = Batch.where("code LIKE ?", "%#{@code}%")
+    @batches = Batch.where('code LIKE ?', "%#{@code}%")
   end
 
   private
 
   def batch_params
-    batch_params = params.require(:batch).permit(:code, :start_date, :final_date, :minimum_value, :minimum_difference, item_ids: [])
+    params.require(:batch).permit(:code, :start_date, :final_date, :minimum_value, :minimum_difference,
+                                  item_ids: [])
   end
 
   def authenticate_user_or_admin!
-    unless current_user || current_admin
-      redirect_to root_path, notice: 'Acesso negado.'
-    end
-  end
+    return if current_user || current_admin
 
+    redirect_to root_path, notice: 'Acesso negado.'
+  end
 end
