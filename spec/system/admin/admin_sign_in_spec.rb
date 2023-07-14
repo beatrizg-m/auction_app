@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Admin authenticates' do
   it 'successfully' do
-    admin = User.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '63253417085')
+    admin = User.create!(name: 'Maria', email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password', cpf: '63253417085', role: 'admin')
 
     visit root_path
     click_on 'Entrar'
@@ -14,6 +14,7 @@ describe 'Admin authenticates' do
 
     expect(page).to have_content 'Login efetuado com sucesso.'
     within('nav') do
+      debugger
       expect(page).to have_button 'Sair'
       expect(page).to have_content 'maria@leilaodogalpao.com.br'
       expect(page).not_to have_link 'Entrar'
