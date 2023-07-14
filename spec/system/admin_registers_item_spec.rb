@@ -5,7 +5,7 @@ require 'rails_helper'
 describe 'Admin registers item for auction' do
   it 'being authenticated' do
     admin = User.create!(email: 'maria@leilaodogalpao.com.br', password: 'password',
-                          password_confirmation: 'password', cpf: '85770404027')
+                         password_confirmation: 'password', cpf: '85770404027')
 
     login_as(admin)
     visit root_path
@@ -20,7 +20,7 @@ describe 'Admin registers item for auction' do
 
   it 'successfully' do
     admin = User.create!(email: 'maria@leilaodogalpao.com.br', password: 'password',
-                          password_confirmation: 'password', cpf: '85770404027')
+                         password_confirmation: 'password', cpf: '85770404027')
     Category.create!(name: 'Roupas', description: 'variedade de vestimentas')
     Category.create!(name: 'Cozinha', description: 'utensilios de cozinha')
     allow(SecureRandom).to receive(:alphanumeric).and_return('ABCDE12345')

@@ -5,7 +5,7 @@ require 'rails_helper'
 describe 'Admin create a batch' do
   it 'being authenticated' do
     admin = User.create!(email: 'maria@leilaodogalpao.com.br', password: 'password',
-                          password_confirmation: 'password', cpf: '85770404027')
+                         password_confirmation: 'password', cpf: '85770404027')
 
     login_as(admin)
     visit root_path
@@ -19,7 +19,7 @@ describe 'Admin create a batch' do
 
   it 'successfully' do
     admin = User.create!(email: 'maria@leilaodogalpao.com.br', password: 'password',
-                          password_confirmation: 'password', cpf: '85770404027')
+                         password_confirmation: 'password', cpf: '85770404027')
     Category.create(name: 'Cozinha', description: 'utensilios de cozinha')
     Item.create!(name: 'Caneca Hello', description: 'Caneca da Hello Kitty branca', weight: 320, width: 13, height: 25,
                  depth: 16, category_id: 1)
@@ -49,7 +49,7 @@ describe 'Admin create a batch' do
 
   it 'With non-standard code' do
     admin = User.create!(email: 'maria@leilaodogalpao.com.br', password: 'password',
-                          password_confirmation: 'password', cpf: '85770404027')
+                         password_confirmation: 'password', cpf: '85770404027')
     Category.create(name: 'Cozinha', description: 'utensilios de cozinha')
     Item.create!(name: 'Caneca Hello', description: 'Caneca da Hello Kitty branca', weight: 320, width: 13, height: 25,
                  depth: 16, category_id: 1)
@@ -78,9 +78,9 @@ describe 'Admin create a batch' do
 
   it 'and needs approval from another admin' do
     User.create!(email: 'maria@leilaodogalpao.com.br', password: 'password',
-                  password_confirmation: 'password', cpf: '85770404027')
+                 password_confirmation: 'password', cpf: '85770404027')
     joao = User.create(email: 'joao@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password',
-                        cpf: '87777471007')
+                       cpf: '87777471007')
     Category.create(name: 'Cozinha', description: 'utensilios de cozinha')
     Item.create!(name: 'Caneca Hello', description: 'Caneca da Hello Kitty branca', weight: 320, width: 13, height: 25,
                  depth: 16, category_id: 1)
@@ -103,9 +103,9 @@ describe 'Admin create a batch' do
 
   it 'and can no longer edit after approval' do
     maria = User.create!(email: 'maria@leilaodogalpao.com.br', password: 'password',
-                          password_confirmation: 'password', cpf: '85770404027')
+                         password_confirmation: 'password', cpf: '85770404027')
     User.create(email: 'joao@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password',
-                 cpf: '87777471007')
+                cpf: '87777471007')
     Category.create(name: 'Cozinha', description: 'utensilios de cozinha')
     Item.create!(name: 'Caneca Hello', description: 'Caneca da Hello Kitty branca', weight: 320, width: 13, height: 25,
                  depth: 16, category_id: 1)

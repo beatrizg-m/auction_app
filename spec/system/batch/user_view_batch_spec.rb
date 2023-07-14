@@ -31,7 +31,7 @@ describe 'user click in batches' do
 
   it 'and is authenticated as admin' do
     admin = User.create(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password',
-                         cpf: '79931180005')
+                        cpf: '79931180005')
     Category.create(name: 'Cozinha', description: 'utensilios de cozinha')
     Item.create!(name: 'Caneca Hello', description: 'Caneca da Hello Kitty branca', weight: 320, width: 13, height: 25,
                  depth: 16, category_id: 1)

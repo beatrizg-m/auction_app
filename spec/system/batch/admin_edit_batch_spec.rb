@@ -5,7 +5,7 @@ require 'rails_helper'
 describe 'admin edits items in a batch' do
   it 'successfully' do
     admin = User.create!(email: 'maria@leilaodogalpao.com.br', password: 'password',
-                          password_confirmation: 'password', cpf: '85770404027')
+                         password_confirmation: 'password', cpf: '85770404027')
     Category.create(name: 'Cozinha', description: 'utensilios de cozinha')
     Item.create!(name: 'Caneca Hello', description: 'Caneca da Hello Kitty branca', weight: 320, width: 13, height: 25,
                  depth: 16, category_id: 1)
@@ -32,7 +32,7 @@ describe 'admin edits items in a batch' do
 
   it 'and withdraw an item' do
     admin = User.create!(email: 'maria@leilaodogalpao.com.br', password: 'password',
-                          password_confirmation: 'password', cpf: '85770404027')
+                         password_confirmation: 'password', cpf: '85770404027')
     Category.create(name: 'Cozinha', description: 'utensilios de cozinha')
     Item.create!(name: 'Caneca Hello', description: 'Caneca da Hello Kitty branca', weight: 320, width: 13, height: 25,
                  depth: 16, category_id: 1)
@@ -56,7 +56,7 @@ describe 'admin edits items in a batch' do
 
   it 'After it is approved' do
     admin = User.create!(email: 'maria@leilaodogalpao.com.br', password: 'password',
-                          password_confirmation: 'password', cpf: '85770404027')
+                         password_confirmation: 'password', cpf: '85770404027')
     Category.create(name: 'Cozinha', description: 'utensilios de cozinha')
     Item.create!(name: 'Caneca Hello', description: 'Caneca da Hello Kitty branca', weight: 320, width: 13, height: 25,
                  depth: 16, category_id: 1)
@@ -76,9 +76,9 @@ describe 'admin edits items in a batch' do
 
   it 'be responsible for the lot' do
     maria = User.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password',
-                          cpf: '79931180005')
+                         cpf: '79931180005')
     joao = User.create!(email: 'joao@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password',
-                         cpf: '85770404027')
+                        cpf: '85770404027')
     batch = Batch.create!(code: '123asd456', start_date: Date.today, final_date: 1.day.from_now,
                           minimum_value: 200, minimum_difference: 50, items: [], approved: false,
                           created_by_id: maria.id)

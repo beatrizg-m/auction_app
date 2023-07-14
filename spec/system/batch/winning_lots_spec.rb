@@ -7,7 +7,7 @@ describe 'user sees winning lots' do
     user = User.create!(email: 'roberto@gmail.com', password: '123456', password_confirmation: '123456',
                         cpf: '36328020090')
     User.create!(email: 'maria@leilaodogalpao.com.br', password: 'password', password_confirmation: 'password',
-                  cpf: '79931180005')
+                 cpf: '79931180005')
     Category.create!(name: 'Cozinha', description: 'utensilios de cozinha')
     Item.create!(name: 'Caneca Hello', description: 'Caneca da Hello Kitty branca', weight: 320, width: 13, height: 25,
                  depth: 16, category_id: 1)
